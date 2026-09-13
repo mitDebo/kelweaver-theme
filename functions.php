@@ -8,17 +8,13 @@
  */
 
 /**
- * Tell WordPress this theme has a navigation menu slot called "primary",
- * and that WordPress should manage the <title> tag for us.
- *
- * Registering "primary" doesn't create the menu itself -- it just makes
- * a named slot available. You (or anyone editing the site) build the
- * actual menu under Appearance > Menus in wp-admin, and assign it to
- * this "Primary Navigation" slot. That's what wp_nav_menu() in
- * header.php will render.
+ * Theme setup: a navigation menu slot, WordPress-managed <title> tag,
+ * and support for featured images (a single representative image you
+ * can optionally attach to a post -- nothing shows if you don't set one).
  */
 function kelweaver_setup() {
 	add_theme_support( 'title-tag' );
+	add_theme_support( 'post-thumbnails' );
 	register_nav_menus(
 		array(
 			'primary' => __( 'Primary Navigation', 'kelweaver' ),
@@ -26,6 +22,30 @@ function kelweaver_setup() {
 	);
 }
 add_action( 'after_setup_theme', 'kelweaver_setup' );
+
+/**
+ * Load the theme's CSS, plus the Merriweather web font from Google Fonts.
+ *
+ * wp_enqueue_style() is WordPress's proper way to load a stylesheet --
+ * rather than hand-writing a <link> tag in header.php, we register it
+ * here so WordPress can manage load order, avoid duplicates if a
+ * plugin needs the same file, etc.
+ */
+function kelweaver_scripts() {
+	wp_enqueue_style(
+		'kelweaver-google-fonts',
+		'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap',
+		array(),
+		null
+	);
+	wp_enqueue_style(
+		'kelweaver-style',
+		get_stylesheet_uri(),
+		array( 'kelweaver-google-fonts' ),
+		wp_get_theme()->get( 'Version' )
+	);
+}
+add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
 /**
  * Social links for the sidebar.

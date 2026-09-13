@@ -1,18 +1,15 @@
 <?php
 /**
- * Site header -- this builds the left-hand sidebar (site title, nav
- * menu, social links) and opens the two wrapper <div>s that make the
- * left/right layout possible:
+ * Site header -- builds the left-hand sidebar (site title, nav menu,
+ * search box, social + RSS links) and opens the two wrapper <div>s
+ * that make the left/right layout possible:
  *
- *   .site-wrapper           <- outer flex/grid container (styled in CSS step)
+ *   .site-wrapper           <- outer flex container (see style.css)
  *     aside.site-sidebar    <- left column, everything in this file
  *     div.site-content      <- right column, opened here, closed in footer.php
  *
- * Every template (index.php, single.php, page.php) calls get_header()
- * first, which runs this file, then prints its own content, then
- * calls get_footer(), which closes these divs back up. Think of
- * header.php/footer.php as the bread of a sandwich that every page is
- * the filling of.
+ * Every template calls get_header() first, prints its own content,
+ * then calls get_footer() to close these divs back up.
  */
 ?>
 <!DOCTYPE html>
@@ -53,6 +50,10 @@
 			?>
 		</nav>
 
+		<div class="site-search">
+			<?php echo get_search_form( false ); ?>
+		</div>
+
 		<ul class="site-social">
 			<?php foreach ( kelweaver_social_links() as $link ) : ?>
 				<li>
@@ -61,6 +62,11 @@
 					</a>
 				</li>
 			<?php endforeach; ?>
+			<li>
+				<a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>">
+					<?php esc_html_e( 'RSS', 'kelweaver' ); ?>
+				</a>
+			</li>
 		</ul>
 
 	</aside>
