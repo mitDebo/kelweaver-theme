@@ -42,7 +42,7 @@ function kelweaver_scripts() {
 		'kelweaver-style',
 		get_stylesheet_uri(),
 		array( 'kelweaver-google-fonts' ),
-		wp_get_theme()->get( 'Version' )
+		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
 }
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
