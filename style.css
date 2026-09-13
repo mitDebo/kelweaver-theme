@@ -1,0 +1,22 @@
+/*
+Theme Name: Kelweaver
+Theme URI: https://kelweaver.com
+Author: Kel Weaver
+Description: A minimal, text-first personal blog theme with a left-hand navigation sidebar and a right-hand content column. Fully responsive.
+Version: 1.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: kelweaver
+*/
+
+/*
+  This file has two jobs in WordPress:
+  1. The comment block above is how WordPress finds and identifies the theme
+     (name, author, etc.) in wp-admin. It's required even though it's just a comment.
+  2. Everything below the comment is the theme's main stylesheet -- WordPress
+     loads this file automatically on every page.
+
+  We'll fill in the actual layout/color/type rules in the "Write responsive
+  layout CSS" step. For now this is just the required skeleton so the theme
+  is valid and activatable.
+*/
