@@ -280,11 +280,17 @@ hr {
 	/* The whole sidebar -- nav, Latest, search, social/RSS -- collapses
 	   as one unit at this width. Collapsed by default; .is-open (added
 	   by js/nav-toggle.js when the hamburger's clicked) reveals it. */
+	/* It's not actually margin -- .site-latest itself has none -- it's
+	   .site-sidebar's own top padding (2.5rem everywhere else, unchanged
+	   by default here same as .site-content's used to be) creating the
+	   gap above the first thing inside it (the nav, empty until a menu's
+	   assigned, then Latest right after it). */
 	.site-sidebar {
 		position: static;
 		width: 100%;
 		border-bottom: 1px solid var(--color-border);
 		display: none;
+		padding-top: 1rem;
 	}
 
 	.site-sidebar.is-open {
