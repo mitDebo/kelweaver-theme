@@ -50,7 +50,7 @@
 			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
 				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
 				<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+					<path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
 				</svg>
 			</button>
 		</div>

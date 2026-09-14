@@ -172,11 +172,6 @@ hr {
 .nav-toggle-icon {
 	width: 1.5rem;
 	height: 1.5rem;
-	transition: transform 0.2s ease;
-}
-
-.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
-	transform: rotate(180deg);
 }
 
 .site-masthead .site-description {
