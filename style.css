@@ -128,6 +128,13 @@ hr {
 	display: flow-root;
 }
 
+.site-masthead-row {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+}
+
 .site-masthead .site-title {
 	margin: 0;
 	font-family: var(--font-display);
@@ -142,6 +149,34 @@ hr {
 
 .site-masthead .site-title a:hover {
 	text-decoration: none;
+}
+
+/* Hidden above 768px -- the nav already shows in the sidebar there,
+   so there's nothing for this button to do. The matching @media block
+   near the sidebar rules below switches it on and hides .site-nav by
+   default at that same width. */
+.nav-toggle {
+	display: none;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	width: 2.5rem;
+	height: 2.5rem;
+	padding: 0;
+	color: var(--color-accent);
+	background: none;
+	border: none;
+	cursor: pointer;
+}
+
+.nav-toggle-icon {
+	width: 1.5rem;
+	height: 1.5rem;
+	transition: transform 0.2s ease;
+}
+
+.nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+	transform: rotate(180deg);
 }
 
 .site-masthead .site-description {
@@ -218,6 +253,22 @@ hr {
 }
 
 @media (max-width: 768px) {
+	.nav-toggle {
+		display: inline-flex;
+	}
+
+	/* Collapsed by default at this width -- .is-open (added by
+	   js/nav-toggle.js when the button's clicked) is what reveals it.
+	   Everything else in the sidebar (Latest, search, social) is
+	   unaffected and keeps stacking normally underneath. */
+	.site-nav {
+		display: none;
+	}
+
+	.site-nav.is-open {
+		display: block;
+	}
+
 	.site-masthead {
 		padding-top: 2rem;
 	}

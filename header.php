@@ -29,11 +29,32 @@
 
 <header class="site-masthead">
 	<div class="site-masthead-inner">
-		<p class="site-title">
-			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-				<?php bloginfo( 'name' ); ?>
-			</a>
-		</p>
+		<div class="site-masthead-row">
+			<p class="site-title">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+					<?php bloginfo( 'name' ); ?>
+				</a>
+			</p>
+
+			<?php
+			/**
+			 * Nav toggle: only ever visible below the 768px breakpoint
+			 * (see style.css) -- on wider screens the nav already shows
+			 * in the sidebar, so this button is hidden by CSS and does
+			 * nothing. aria-expanded starts false and js/nav-toggle.js
+			 * flips it (and the matching site-nav class) on click; the
+			 * arrow's rotation is driven off aria-expanded too, so the
+			 * icon and the accessibility state can never drift apart.
+			 */
+			?>
+			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
+				<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+					<path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+				</svg>
+			</button>
+		</div>
+
 		<?php $description = get_bloginfo( 'description', 'display' ); ?>
 		<?php if ( $description ) : ?>
 			<p class="site-description"><?php echo $description; ?></p>
@@ -46,7 +67,7 @@
 
 	<aside class="site-sidebar">
 
-		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
+		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
 			wp_nav_menu(
 				array(

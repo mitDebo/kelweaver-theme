@@ -46,6 +46,18 @@ function kelweaver_scripts() {
 		array( 'kelweaver-google-fonts' ),
 		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
+
+	// Shows/hides the primary nav behind the header's arrow button on
+	// narrow screens -- see js/nav-toggle.js. `true` at the end loads
+	// it in the footer, after the nav it looks for already exists in
+	// the page, rather than in <head> before that markup is there.
+	wp_enqueue_script(
+		'kelweaver-nav-toggle',
+		get_stylesheet_directory_uri() . '/js/nav-toggle.js',
+		array(),
+		filemtime( get_stylesheet_directory() . '/js/nav-toggle.js' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
