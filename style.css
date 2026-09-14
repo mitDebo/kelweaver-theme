@@ -230,6 +230,13 @@ hr {
 	background: rgba(27, 27, 26, 0.25);
 }
 
+/* The masthead's copy of this divider runs the full width of its
+   container instead of the usual 75% -- everything else about it
+   (thickness, color, spacing) stays the same. */
+.site-masthead-inner .section-divider {
+	width: 100%;
+}
+
 /* ---------------------------------------------------------------------
    Sidebar contents.
    --------------------------------------------------------------------- */
