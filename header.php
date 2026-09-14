@@ -54,13 +54,6 @@
 			<?php echo get_search_form( false ); ?>
 		</div>
 
-		<div class="site-font-toggle">
-			<label>
-				<input type="checkbox" id="font-compare-toggle">
-				<?php esc_html_e( 'Compare: Georgia', 'kelweaver' ); ?>
-			</label>
-		</div>
-
 		<ul class="site-social">
 			<?php foreach ( kelweaver_social_links() as $link ) : ?>
 				<li>

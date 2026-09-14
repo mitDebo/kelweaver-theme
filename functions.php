@@ -44,17 +44,6 @@ function kelweaver_scripts() {
 		array( 'kelweaver-google-fonts' ),
 		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
-
-	// Temporary dev tool: the sidebar checkbox that lets us compare the
-	// site in Merriweather vs. Georgia. Fine to remove once a font is
-	// settled on for good.
-	wp_enqueue_script(
-		'kelweaver-compare-font',
-		get_stylesheet_directory_uri() . '/js/compare-font.js',
-		array(),
-		filemtime( get_stylesheet_directory() . '/js/compare-font.js' ),
-		true
-	);
 }
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
