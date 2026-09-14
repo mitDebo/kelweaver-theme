@@ -24,7 +24,9 @@ function kelweaver_setup() {
 add_action( 'after_setup_theme', 'kelweaver_setup' );
 
 /**
- * Load the theme's CSS, plus the Merriweather web font from Google Fonts.
+ * Load the theme's CSS, plus its Google Fonts: Merriweather for body
+ * text, and Fraunces (a display serif, used only for the big site
+ * title in the masthead) -- one request loads both families.
  *
  * wp_enqueue_style() is WordPress's proper way to load a stylesheet --
  * rather than hand-writing a <link> tag in header.php, we register it
@@ -34,7 +36,7 @@ add_action( 'after_setup_theme', 'kelweaver_setup' );
 function kelweaver_scripts() {
 	wp_enqueue_style(
 		'kelweaver-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap',
+		'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap',
 		array(),
 		null
 	);
