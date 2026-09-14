@@ -74,26 +74,24 @@
 		<details class="site-latest" open>
 			<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
 
-			<?php if ( $latest_posts->have_posts() ) : ?>
-				<ul>
+			<ul>
+				<?php if ( $latest_posts->have_posts() ) : ?>
 					<?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
 						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 					<?php endwhile; ?>
-				</ul>
-			<?php endif; ?>
-			<?php wp_reset_postdata(); ?>
+				<?php endif; ?>
+				<?php wp_reset_postdata(); ?>
 
-			<?php
-			// The archive page doesn't exist until you create it in
-			// wp-admin (a Page titled "Archive", slug "archive", using
-			// the "Archive" template) -- until then this just falls
-			// back to the homepage so the link is never broken.
-			$archive_page = get_page_by_path( 'archive' );
-			$archive_url  = $archive_page ? get_permalink( $archive_page ) : home_url( '/' );
-			?>
-			<a class="site-latest-archive" href="<?php echo esc_url( $archive_url ); ?>">
-				<?php esc_html_e( 'Browse all', 'kelweaver' ); ?> &rarr;
-			</a>
+				<?php
+				// The archive page doesn't exist until you create it in
+				// wp-admin (a Page titled "Archive", slug "archive", using
+				// the "Archive" template) -- until then this just falls
+				// back to the homepage so the link is never broken.
+				$archive_page = get_page_by_path( 'archive' );
+				$archive_url  = $archive_page ? get_permalink( $archive_page ) : home_url( '/' );
+				?>
+				<li><a href="<?php echo esc_url( $archive_url ); ?>"><?php esc_html_e( 'Browse all', 'kelweaver' ); ?> &rarr;</a></li>
+			</ul>
 		</details>
 
 		<div class="site-search">

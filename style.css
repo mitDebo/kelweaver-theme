@@ -26,6 +26,10 @@ Text Domain: kelweaver
 	--color-accent: #8c3a2b;
 	--color-border: rgba(0, 0, 0, 0.12);
 	--color-muted: rgba(0, 0, 0, 0.6);
+	/* A true white, distinct from --color-bg's off-white paper tone --
+	   for small "raised" elements like form fields that should read as
+	   their own surface sitting on top of the page background. */
+	--color-surface: #ffffff;
 
 	--font-body: 'Merriweather', Georgia, serif;
 
@@ -196,12 +200,6 @@ h3 {
 	color: var(--color-accent);
 }
 
-.site-latest-archive {
-	display: inline-block;
-	font-size: 0.85rem;
-	font-weight: 700;
-}
-
 .site-nav ul {
 	list-style: none;
 	margin: 0 0 2rem;
@@ -224,7 +222,7 @@ h3 {
 	padding: 0.5rem;
 	font-family: inherit;
 	color: var(--color-text);
-	background: transparent;
+	background: var(--color-surface);
 	border: 1px solid var(--color-border);
 	border-radius: 4px;
 }
@@ -232,11 +230,18 @@ h3 {
 .site-search input[type='submit'] {
 	margin-top: 0.5rem;
 	font-family: inherit;
-	background: transparent;
-	border: 1px solid var(--color-border);
+	font-weight: 700;
+	color: var(--color-surface);
+	background: var(--color-accent);
+	border: 1px solid var(--color-accent);
 	border-radius: 4px;
 	padding: 0.4rem 0.75rem;
 	cursor: pointer;
+}
+
+.site-search input[type='submit']:hover {
+	background: var(--color-text);
+	border-color: var(--color-text);
 }
 
 
