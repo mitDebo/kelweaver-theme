@@ -349,10 +349,11 @@ hr {
 .post-title {
 	font-size: 1.6rem;
 	margin: 0 0 0.5rem;
+	color: var(--color-accent);
 }
 
 .post-title a {
-	color: var(--color-text);
+	color: var(--color-accent);
 }
 
 .post-meta {
