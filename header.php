@@ -1,11 +1,16 @@
 <?php
 /**
- * Site header -- builds the left-hand sidebar (site title, nav menu,
- * search box, social + RSS links) and opens the two wrapper <div>s
- * that make the left/right layout possible:
+ * Site header -- prints the big full-width title banner, then opens
+ * the left-hand sidebar (nav, search, latest posts, social + RSS) and
+ * the two wrapper <div>s that make the left/right layout possible:
  *
- *   .site-wrapper           <- outer flex container (see style.css)
- *     aside.site-sidebar    <- left column, everything in this file
+ *   header.site-masthead    <- big "kelweaver.com" title banner, full
+ *                               width, scrolls away normally with the
+ *                               rest of the page (not sticky)
+ *   .site-wrapper            <- outer flex container (see style.css)
+ *     aside.site-sidebar    <- left column, sticky (stays put once you
+ *                               scroll past the masthead) -- everything
+ *                               below the banner in this file
  *     div.site-content      <- right column, opened here, closed in footer.php
  *
  * Every template calls get_header() first, prints its own content,
@@ -22,21 +27,21 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<header class="site-masthead">
+	<p class="site-title">
+		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<?php bloginfo( 'name' ); ?>
+		</a>
+	</p>
+	<?php $description = get_bloginfo( 'description', 'display' ); ?>
+	<?php if ( $description ) : ?>
+		<p class="site-description"><?php echo $description; ?></p>
+	<?php endif; ?>
+</header>
+
 <div class="site-wrapper">
 
 	<aside class="site-sidebar">
-
-		<div class="site-branding">
-			<p class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<?php bloginfo( 'name' ); ?>
-				</a>
-			</p>
-			<?php $description = get_bloginfo( 'description', 'display' ); ?>
-			<?php if ( $description ) : ?>
-				<p class="site-description"><?php echo $description; ?></p>
-			<?php endif; ?>
-		</div>
 
 		<nav class="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
@@ -53,6 +58,47 @@
 		<div class="site-search">
 			<?php echo get_search_form( false ); ?>
 		</div>
+
+		<?php
+		/**
+		 * "Latest": a collapsible list of the 10 most recent posts, plus
+		 * a link to the full archive. This uses the native HTML <details>
+		 * element for the collapse/expand behavior -- no JavaScript
+		 * needed, the browser handles opening/closing and keyboard
+		 * support for free. `open` just means it starts out expanded.
+		 */
+		$latest_posts = new WP_Query(
+			array(
+				'posts_per_page' => 10,
+				'no_found_rows'  => true,
+				'post_status'    => 'publish',
+			)
+		);
+		?>
+		<details class="site-latest" open>
+			<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
+
+			<?php if ( $latest_posts->have_posts() ) : ?>
+				<ul>
+					<?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
+						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+					<?php endwhile; ?>
+				</ul>
+			<?php endif; ?>
+			<?php wp_reset_postdata(); ?>
+
+			<?php
+			// The archive page doesn't exist until you create it in
+			// wp-admin (a Page titled "Archive", slug "archive", using
+			// the "Archive" template) -- until then this just falls
+			// back to the homepage so the link is never broken.
+			$archive_page = get_page_by_path( 'archive' );
+			$archive_url  = $archive_page ? get_permalink( $archive_page ) : home_url( '/' );
+			?>
+			<a class="site-latest-archive" href="<?php echo esc_url( $archive_url ); ?>">
+				<?php esc_html_e( 'Browse all', 'kelweaver' ); ?> &rarr;
+			</a>
+		</details>
 
 		<ul class="site-social">
 			<?php foreach ( kelweaver_social_links() as $link ) : ?>
