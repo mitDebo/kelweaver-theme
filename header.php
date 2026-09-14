@@ -107,22 +107,34 @@
 			// network is skipped rather than linking nowhere). Email is
 			// stored as a plain address and turned into a mailto: link
 			// here; everything else is used as-is.
+			//
+			// Each link shows a small icon instead of the network's name
+			// -- the name itself is still there in the HTML (inside
+			// .screen-reader-text), just visually hidden, so the link
+			// still makes sense read aloud by a screen reader or with
+			// CSS switched off.
 			foreach ( kelweaver_social_networks() as $key => $network ) :
 				$value = get_theme_mod( 'kelweaver_' . $key . '_url' );
 				if ( ! $value ) {
 					continue;
 				}
 				$href = ( 'email' === $network['type'] ) ? 'mailto:' . $value : $value;
+				$icon = kelweaver_social_icons()[ $key ] ?? null;
 				?>
 				<li>
 					<a href="<?php echo esc_url( $href ); ?>">
-						<?php echo esc_html( $network['label'] ); ?>
+						<?php if ( $icon ) : ?>
+							<svg class="social-icon" viewBox="<?php echo esc_attr( $icon['viewBox'] ); ?>" aria-hidden="true" focusable="false"><path d="<?php echo esc_attr( $icon['d'] ); ?>"></path></svg>
+						<?php endif; ?>
+						<span class="screen-reader-text"><?php echo esc_html( $network['label'] ); ?></span>
 					</a>
 				</li>
 			<?php endforeach; ?>
+			<?php $rss_icon = kelweaver_social_icons()['rss']; ?>
 			<li>
 				<a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>">
-					<?php esc_html_e( 'RSS', 'kelweaver' ); ?>
+					<svg class="social-icon" viewBox="<?php echo esc_attr( $rss_icon['viewBox'] ); ?>" aria-hidden="true" focusable="false"><path d="<?php echo esc_attr( $rss_icon['d'] ); ?>"></path></svg>
+					<span class="screen-reader-text"><?php esc_html_e( 'RSS', 'kelweaver' ); ?></span>
 				</a>
 			</li>
 		</ul>
