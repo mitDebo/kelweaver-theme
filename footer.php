@@ -1,16 +1,23 @@
 <?php
 /**
  * Closes the two wrapper divs opened in header.php (see the comment
- * there), then WordPress's own wp_footer() hook, then the page.
- * Real footer content (copyright line, widgets, etc.) comes in the
- * "footer.php and loose ends" step -- this just closes things off
- * correctly for now so the layout is structurally valid.
+ * there), prints a small site footer, then WordPress's own
+ * wp_footer() hook, then the page.
  */
 ?>
 
 	</div><!-- .site-content -->
 
 </div><!-- .site-wrapper -->
+
+<footer class="site-footer">
+	<div class="site-footer-inner">
+		<hr class="section-divider">
+		<p class="site-copyright">
+			&copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?> Kelly Weaver
+		</p>
+	</div>
+</footer>
 
 <?php wp_footer(); ?>
 </body>

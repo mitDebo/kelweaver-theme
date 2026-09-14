@@ -192,6 +192,31 @@ hr {
 	overflow-wrap: break-word;
 }
 
+/* ---------------------------------------------------------------------
+   Footer: a full-width band below everything (mirrors the masthead
+   at the top), holding just a divider and a copyright line for now.
+   --------------------------------------------------------------------- */
+
+.site-footer {
+	padding: 0 2rem 3rem;
+}
+
+.site-footer-inner {
+	max-width: var(--layout-max-width);
+	margin: 0 auto;
+	/* Same reasoning as .site-masthead-inner: keeps the divider's own
+	   top/bottom margin contained inside this box rather than
+	   collapsing out through it. */
+	display: flow-root;
+}
+
+.site-copyright {
+	margin: 0;
+	font-size: 0.85rem;
+	color: var(--color-muted);
+	text-align: center;
+}
+
 @media (max-width: 768px) {
 	.site-masthead {
 		padding-top: 2rem;
@@ -199,6 +224,10 @@ hr {
 
 	.site-masthead-inner {
 		padding: 0 1.5rem;
+	}
+
+	.site-footer {
+		padding: 0 1.5rem 2rem;
 	}
 
 	.site-wrapper {
@@ -222,10 +251,11 @@ hr {
    specific placements can still override the default width/margin
    without touching dividers elsewhere (post separators, etc.). */
 
-/* The masthead's divider runs the full width of its container
-   instead of the usual 75%, and stays solid rather than fading at
-   the edges like every other divider on the site. */
-.site-masthead-inner .section-divider {
+/* The masthead's and footer's dividers run the full width of their
+   container instead of the usual 75%, and stay solid rather than
+   fading at the edges like every other divider on the site. */
+.site-masthead-inner .section-divider,
+.site-footer-inner .section-divider {
 	width: 100%;
 	background: rgba(27, 27, 26, 0.25);
 }
