@@ -260,6 +260,15 @@ hr {
 		padding: 0 1.5rem;
 	}
 
+	/* Only the bottom gap -- the divider's top margin (the space
+	   between it and the title) stays the usual 1.5rem from the base
+	   `hr` rule; this just tightens the space between the line and
+	   whatever's below it (the hamburger's sidebar, or the post
+	   stream) on narrow screens. */
+	.site-masthead-inner .section-divider {
+		margin-bottom: 1rem;
+	}
+
 	.site-footer {
 		padding: 0 1.5rem 2rem;
 	}
