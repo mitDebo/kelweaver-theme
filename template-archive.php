@@ -1,18 +1,5 @@
 <?php
-/**
- * Template Name: Archive
- *
- * A single page listing every post ever published, grouped by year,
- * as just a date + title (no excerpts) -- for quickly scanning
- * everything at once or jumping to something you remember writing a
- * while back, rather than clicking "next page" through the homepage.
- *
- * To use this: in wp-admin, create a Page titled "Archive" (slug
- * "archive" -- that's what the sidebar's "Browse all" link looks
- * for), and in the Page Attributes panel pick "Archive" as the
- * template, then publish. Nothing else to configure; the list below
- * is generated automatically from your posts.
- */
+/* Template Name: Archive */
 get_header();
 ?>
 

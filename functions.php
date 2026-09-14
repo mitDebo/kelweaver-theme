@@ -1,17 +1,5 @@
 <?php
-/**
- * Kelweaver theme functions.
- *
- * This file is where a WordPress theme registers its capabilities
- * (menus, featured images, etc.) and loads its own CSS/JS. It runs on
- * every page load, before the templates render.
- */
 
-/**
- * Theme setup: a navigation menu slot, WordPress-managed <title> tag,
- * and support for featured images (a single representative image you
- * can optionally attach to a post -- nothing shows if you don't set one).
- */
 function kelweaver_setup() {
 	add_theme_support( 'title-tag' );
 	add_theme_support( 'post-thumbnails' );
@@ -23,16 +11,6 @@ function kelweaver_setup() {
 }
 add_action( 'after_setup_theme', 'kelweaver_setup' );
 
-/**
- * Load the theme's CSS, plus its Google Fonts: Merriweather for body
- * text, and Fraunces (a display serif, used only for the big site
- * title in the masthead) -- one request loads both families.
- *
- * wp_enqueue_style() is WordPress's proper way to load a stylesheet --
- * rather than hand-writing a <link> tag in header.php, we register it
- * here so WordPress can manage load order, avoid duplicates if a
- * plugin needs the same file, etc.
- */
 function kelweaver_scripts() {
 	wp_enqueue_style(
 		'kelweaver-google-fonts',
@@ -47,10 +25,6 @@ function kelweaver_scripts() {
 		filemtime( get_stylesheet_directory() . '/style.css' )
 	);
 
-	// Shows/hides the primary nav behind the header's arrow button on
-	// narrow screens -- see js/nav-toggle.js. `true` at the end loads
-	// it in the footer, after the nav it looks for already exists in
-	// the page, rather than in <head> before that markup is there.
 	wp_enqueue_script(
 		'kelweaver-nav-toggle',
 		get_stylesheet_directory_uri() . '/js/nav-toggle.js',
@@ -61,22 +35,6 @@ function kelweaver_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
-/**
- * Customizes the browser-tab <title> WordPress builds automatically
- * (theme support for 'title-tag' above is what turns this on -- it's
- * what actually prints the <title> tag into <head>, we're just
- * changing what text goes inside it).
- *
- * Everywhere except the homepage: "<page title> | kelweaver.com".
- * $title['title'] arrives already set to whatever WordPress decided
- * the page's own title is -- a post's title, "Search Results for
- * ...", "Page not found", a category name, and so on -- so this just
- * adds the site name after it and drops the tagline WordPress
- * sometimes adds alongside it.
- *
- * On the homepage: just "kelweaver.com" by itself, since
- * "kelweaver.com | kelweaver.com" would be redundant.
- */
 function kelweaver_document_title_parts( $title ) {
 	if ( is_front_page() ) {
 		return array( 'title' => get_bloginfo( 'name', 'display' ) );
@@ -89,26 +47,11 @@ function kelweaver_document_title_parts( $title ) {
 }
 add_filter( 'document_title_parts', 'kelweaver_document_title_parts' );
 
-/**
- * WordPress joins the pieces above with " - " by default; use "|"
- * instead to match "<page title> | kelweaver.com".
- */
 function kelweaver_document_title_separator() {
 	return '|';
 }
 add_filter( 'document_title_separator', 'kelweaver_document_title_separator' );
 
-/**
- * Social/profile links the sidebar knows how to show. Each key becomes
- * a Customizer field named kelweaver_{key}_url -- add a line here to
- * offer a new network anywhere on the site; nothing else to wire up.
- * Order here is also the order they'll appear in wp-admin (and, since
- * header.php loops over this same list, in the sidebar too).
- *
- * 'type' is 'url' for a normal profile link, or 'email' for a plain
- * address -- Kelly just types his email in, and header.php turns it
- * into a mailto: link automatically (no "mailto:" typing required).
- */
 function kelweaver_social_networks() {
 	return array(
 		'instagram'  => array(
@@ -170,13 +113,6 @@ function kelweaver_social_networks() {
 	);
 }
 
-/**
- * Registers one URL setting per network above in the Customizer
- * (Appearance > Customize > Social Links in wp-admin) -- plain text
- * fields Kelly fills in himself, instead of hardcoded links in PHP.
- * header.php reads them back with get_theme_mod(), and shows nothing
- * for any network left blank, rather than linking to a placeholder.
- */
 function kelweaver_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
 		'kelweaver_social_links',
@@ -201,7 +137,6 @@ function kelweaver_customize_register( $wp_customize ) {
 		$wp_customize->add_control(
 			$setting_id,
 			array(
-				/* translators: %s: network name, e.g. "Instagram" or "Email". */
 				'label'   => $is_email ? $network['label'] : sprintf( __( '%s URL', 'kelweaver' ), $network['label'] ),
 				'section' => 'kelweaver_social_links',
 				'type'    => $is_email ? 'email' : 'url',
@@ -211,17 +146,6 @@ function kelweaver_customize_register( $wp_customize ) {
 }
 add_action( 'customize_register', 'kelweaver_customize_register' );
 
-/**
- * Inline SVG icon data for the sidebar's social/profile links --
- * one small vector path per network, drawn instead of the network's
- * name as text. Sourced from the Simple Icons project (MIT license)
- * for brand marks, Font Awesome Free (CC BY 4.0) for LinkedIn (Simple
- * Icons dropped it at LinkedIn's request), and a generic Material
- * Symbols envelope glyph (Apache 2.0) for Email, which isn't a brand.
- * Each path is drawn with `fill: currentColor` in CSS, so it always
- * matches the surrounding link color (and any future color scheme)
- * automatically -- no separate icon colors to maintain by hand.
- */
 function kelweaver_social_icons() {
 	return array(
 		'instagram' => array(
@@ -280,9 +204,6 @@ function kelweaver_social_icons() {
 			'viewBox' => '0 0 24 24',
 			'd'       => 'M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z',
 		),
-		// Not one of the Customizer-driven networks above (RSS is always
-		// on, not a URL Kelly fills in) -- kept here anyway so the RSS
-		// link in the sidebar can use the same icon treatment as the rest.
 		'rss' => array(
 			'viewBox' => '0 0 24 24',
 			'd'       => 'M19.199 24C19.199 13.467 10.533 4.8 0 4.8V0c13.165 0 24 10.835 24 24h-4.801zM3.291 17.415c1.814 0 3.293 1.479 3.293 3.295 0 1.813-1.485 3.29-3.301 3.29C1.47 24 0 22.526 0 20.71s1.475-3.294 3.291-3.295zM15.909 24h-4.665c0-6.169-5.075-11.245-11.244-11.245V8.09c8.727 0 15.909 7.184 15.909 15.91z',

@@ -1,11 +1,4 @@
 <?php
-/**
- * Static page template -- for standalone pages like a reading list,
- * a CV, or a project writeup (as opposed to single.php, which is for
- * blog posts). No date, category, tags, or prev/next links here --
- * those are post concepts and pages aren't part of that chronological
- * stream. A featured image shows if one's set, same as on a post.
- */
 get_header();
 ?>
 

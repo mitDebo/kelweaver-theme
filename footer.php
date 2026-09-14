@@ -1,14 +1,6 @@
-<?php
-/**
- * Closes the two wrapper divs opened in header.php (see the comment
- * there), prints a small site footer, then WordPress's own
- * wp_footer() hook, then the page.
- */
-?>
+	</div>
 
-	</div><!-- .site-content -->
-
-</div><!-- .site-wrapper -->
+</div>
 
 <footer class="site-footer">
 	<div class="site-footer-inner">

@@ -1,10 +1,4 @@
 <?php
-/**
- * Single post template -- shows one full post: featured image, title,
- * date + category, the full content, tags, then simple "older/newer
- * post" links at the bottom. No comments -- that's a deliberate
- * decision, not something left unfinished.
- */
 get_header();
 ?>
 

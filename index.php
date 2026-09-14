@@ -1,9 +1,4 @@
 <?php
-/**
- * Main template file -- the homepage post stream. Shows an excerpt of
- * each post (title, date, category, a snippet of text, "read more"),
- * newest first, paginated per Settings > Reading in wp-admin.
- */
 get_header();
 ?>
 

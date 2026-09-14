@@ -1,27 +1,3 @@
-<?php
-/**
- * Site header -- prints the big full-width title banner, then opens
- * the left-hand sidebar (nav, latest posts, search, social + RSS) and
- * the two wrapper <div>s that make the left/right layout possible:
- *
- *   header.site-masthead    <- big "kelweaver.com" title banner, full
- *                               width, scrolls away normally with the
- *                               rest of the page (not sticky)
- *   .site-wrapper            <- outer flex container (see style.css)
- *     aside.site-sidebar    <- left column, sticky (stays put once you
- *                               scroll past the masthead) -- everything
- *                               below the banner in this file. Below
- *                               768px this whole aside is what the
- *                               masthead's hamburger button shows and
- *                               hides (see .nav-toggle below and the
- *                               .site-sidebar rules in style.css) --
- *                               not just the nav links inside it.
- *     div.site-content      <- right column, opened here, closed in footer.php
- *
- * Every template calls get_header() first, prints its own content,
- * then calls get_footer() to close these divs back up.
- */
-?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -41,17 +17,6 @@
 				</a>
 			</p>
 
-			<?php
-			/**
-			 * Sidebar toggle: only ever visible below the 768px
-			 * breakpoint (see style.css) -- above that, the sidebar
-			 * already shows in full, so this button is hidden by CSS
-			 * and does nothing. Controls the WHOLE sidebar (nav,
-			 * Latest, search, social/RSS) as one unit, not just the
-			 * nav links -- js/nav-toggle.js toggles .is-open on
-			 * #site-sidebar and keeps aria-expanded in sync with it.
-			 */
-			?>
 			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-sidebar">
 				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
 				<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
@@ -85,13 +50,6 @@
 		</nav>
 
 		<?php
-		/**
-		 * "Latest": a collapsible list of the 10 most recent posts, plus
-		 * a link to the full archive. This uses the native HTML <details>
-		 * element for the collapse/expand behavior -- no JavaScript
-		 * needed, the browser handles opening/closing and keyboard
-		 * support for free. `open` just means it starts out expanded.
-		 */
 		$latest_posts = new WP_Query(
 			array(
 				'posts_per_page' => 10,
@@ -112,10 +70,6 @@
 				<?php wp_reset_postdata(); ?>
 
 				<?php
-				// The archive page doesn't exist until you create it in
-				// wp-admin (a Page titled "Archive", slug "archive", using
-				// the "Archive" template) -- until then this just falls
-				// back to the homepage so the link is never broken.
 				$archive_page = get_page_by_path( 'archive' );
 				$archive_url  = $archive_page ? get_permalink( $archive_page ) : home_url( '/' );
 				?>
@@ -131,19 +85,6 @@
 
 		<ul class="site-social">
 			<?php
-			// Each network's value comes from Appearance > Customize >
-			// Social Links, instead of being hardcoded here --
-			// get_theme_mod() just reads whatever's saved there (empty
-			// string if nothing's been entered, in which case that one
-			// network is skipped rather than linking nowhere). Email is
-			// stored as a plain address and turned into a mailto: link
-			// here; everything else is used as-is.
-			//
-			// Each link shows a small icon instead of the network's name
-			// -- the name itself is still there in the HTML (inside
-			// .screen-reader-text), just visually hidden, so the link
-			// still makes sense read aloud by a screen reader or with
-			// CSS switched off.
 			foreach ( kelweaver_social_networks() as $key => $network ) :
 				$value = get_theme_mod( 'kelweaver_' . $key . '_url' );
 				if ( ! $value ) {

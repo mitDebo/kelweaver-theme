@@ -9,45 +9,22 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: kelweaver
 */
 
-/*
-  ---------------------------------------------------------------------
-  "Paperback" color scheme.
-  ---------------------------------------------------------------------
-  These are CSS custom properties (variables) -- defined once here,
-  referenced everywhere else below as var(--name). When we build the
-  other two schemes later, we'll define a second set of these same
-  variable names under a [data-theme="..."] selector, and a small bit
-  of JS will swap which set is active. For now there's only one
-  scheme, so these are just the defaults.
-*/
 :root {
 	--color-bg: #efece4;
 	--color-text: #1b1b1a;
 	--color-accent: #8c3a2b;
 	--color-border: rgba(0, 0, 0, 0.12);
 	--color-muted: rgba(0, 0, 0, 0.6);
-	/* A true white, distinct from --color-bg's off-white paper tone --
-	   for small "raised" elements like form fields that should read as
-	   their own surface sitting on top of the page background. */
 	--color-surface: #ffffff;
 
 	--font-body: 'Merriweather', Georgia, serif;
-	/* Used only for the big site title in the masthead -- everything
-	   else (nav, post titles, body text) stays on --font-body. */
 	--font-display: 'Fraunces', Georgia, serif;
 
 	--sidebar-width: 260px;
 	--content-max-width: 68ch;
-	/* Sidebar + content together, as a single block -- used to center
-	   that whole two-column layout in the viewport (see .site-wrapper
-	   and .site-masthead-inner below), instead of letting the content
-	   column just trail off with empty space to its right. */
 	--layout-max-width: calc(var(--sidebar-width) + var(--content-max-width));
 }
 
-/* A plain reset: browsers apply their own default spacing to things
-   like headings and lists, which differs browser to browser. Zeroing
-   it out and opting back in deliberately (below) keeps things predictable. */
 *,
 *::before,
 *::after {
@@ -67,13 +44,6 @@ body {
 	font-size: 1.0625rem;
 	line-height: 1.7;
 
-	/* Paper grain: a baked 256x256 noise tile (grain.png), generated once
-	   with the "Grain Synth" tool and repeated across the page. We tried
-	   generating this noise live with a CSS/SVG filter (feTurbulence) --
-	   it turned out that technique renders as a flat, textureless grey
-	   when used as a *tiled background* in this browser, even though the
-	   same filter looks fine as a standalone image. A pre-baked PNG has
-	   no such surprise: what you see in the file is exactly what paints. */
 	background-image: url("grain.png");
 	background-repeat: repeat;
 	background-size: 200px 200px;
@@ -95,11 +65,6 @@ h3 {
 	line-height: 1.3;
 }
 
-/* Chosen with the Divider Synth tool: a soft 4px bar that fades to
-   transparent at both ends instead of a hard-edged line, at 75% of
-   its container's width and centered. Covers every <hr> on the site
-   -- the structural ones below, and any "Separator" block dropped
-   into a post's own content from the editor. */
 hr {
 	border: none;
 	width: 75%;
@@ -108,19 +73,10 @@ hr {
 	background: linear-gradient(to right, transparent, rgba(27, 27, 26, 0.25), transparent);
 }
 
-/* ---------------------------------------------------------------------
-   Masthead: big full-width title banner above everything else. Not
-   sticky -- it scrolls away normally as you read down the page.
-   --------------------------------------------------------------------- */
-
 .site-masthead {
 	padding-top: 3rem;
 }
 
-/* The dividing line under the title used to run the full width of the
-   browser window. Constraining and centering this inner box the same
-   way as .site-wrapper below makes the line stop exactly where the
-   sidebar+content block does, instead of spanning past it. */
 .site-masthead-inner {
 	max-width: var(--layout-max-width);
 	margin: 0 auto;
@@ -151,10 +107,6 @@ hr {
 	text-decoration: none;
 }
 
-/* Hidden above 768px -- the nav already shows in the sidebar there,
-   so there's nothing for this button to do. The matching @media block
-   near the sidebar rules below switches it on and hides .site-nav by
-   default at that same width. */
 .nav-toggle {
 	display: none;
 	align-items: center;
@@ -180,14 +132,6 @@ hr {
 	color: var(--color-muted);
 }
 
-/* ---------------------------------------------------------------------
-   Layout: sidebar (left) + content (right), stacking on narrow screens.
-   --------------------------------------------------------------------- */
-/* .site-sidebar is `position: sticky; top: 0;` below -- combined with
-   the masthead above being a normal (non-sticky) block, that's what
-   makes the banner scroll away while the sidebar catches at the top
-   of the viewport and stays there as you keep scrolling. */
-
 .site-wrapper {
 	display: flex;
 	flex-direction: row;
@@ -210,22 +154,11 @@ hr {
 	max-width: var(--content-max-width);
 }
 
-/* Justified text lines up both the left AND right edges of each line
-   (instead of leaving a ragged right edge), by stretching the spacing
-   between words. `hyphens: auto` goes with it for a reason: without
-   it, justify can stretch a short line's word-gaps into ugly wide
-   rivers of whitespace when a long word doesn't quite fit -- letting
-   the browser hyphenate words at line breaks avoids that. */
 .site-content p {
 	text-align: justify;
 	hyphens: auto;
 	overflow-wrap: break-word;
 }
-
-/* ---------------------------------------------------------------------
-   Footer: a full-width band below everything (mirrors the masthead
-   at the top), holding just a divider and a copyright line for now.
-   --------------------------------------------------------------------- */
 
 .site-footer {
 	padding: 0 2rem 3rem;
@@ -234,9 +167,6 @@ hr {
 .site-footer-inner {
 	max-width: var(--layout-max-width);
 	margin: 0 auto;
-	/* Same reasoning as .site-masthead-inner: keeps the divider's own
-	   top/bottom margin contained inside this box rather than
-	   collapsing out through it. */
 	display: flow-root;
 }
 
@@ -260,11 +190,6 @@ hr {
 		padding: 0 1.5rem;
 	}
 
-	/* Only the bottom gap -- the divider's top margin (the space
-	   between it and the title) stays the usual 1.5rem from the base
-	   `hr` rule; this just tightens the space between the line and
-	   whatever's below it (the hamburger's sidebar, or the post
-	   stream) on narrow screens. */
 	.site-masthead-inner .section-divider {
 		margin-bottom: 1rem;
 	}
@@ -277,14 +202,6 @@ hr {
 		flex-direction: column;
 	}
 
-	/* The whole sidebar -- nav, Latest, search, social/RSS -- collapses
-	   as one unit at this width. Collapsed by default; .is-open (added
-	   by js/nav-toggle.js when the hamburger's clicked) reveals it. */
-	/* It's not actually margin -- .site-latest itself has none -- it's
-	   .site-sidebar's own top padding (2.5rem everywhere else, unchanged
-	   by default here same as .site-content's used to be) creating the
-	   gap above the first thing inside it (the nav, empty until a menu's
-	   assigned, then Latest right after it). */
 	.site-sidebar {
 		position: static;
 		width: 100%;
@@ -303,24 +220,11 @@ hr {
 	}
 }
 
-/* Every divider on the site now looks the same (see the plain `hr`
-   rule above) -- .section-divider doesn't need its own copy of that
-   look anymore. It's kept as a marker class purely so a couple of
-   specific placements can still override the default width/margin
-   without touching dividers elsewhere (post separators, etc.). */
-
-/* The masthead's and footer's dividers run the full width of their
-   container instead of the usual 75%, and stay solid rather than
-   fading at the edges like every other divider on the site. */
 .site-masthead-inner .section-divider,
 .site-footer-inner .section-divider {
 	width: 100%;
 	background: rgba(27, 27, 26, 0.25);
 }
-
-/* ---------------------------------------------------------------------
-   Sidebar contents.
-   --------------------------------------------------------------------- */
 
 .site-latest {
 	margin-bottom: 2rem;
@@ -340,9 +244,6 @@ hr {
 }
 
 .site-latest ul {
-	/* A real bulleted list -- disc markers, indented to make room for
-	   them -- and capped at the same 0.75rem as the "Latest" label
-	   itself so the list never reads louder than its own heading. */
 	list-style: disc;
 	margin: 0 0 0.75rem;
 	padding: 0 0 0 1.1rem;
@@ -370,9 +271,6 @@ hr {
 	margin-bottom: 2rem;
 }
 
-/* WordPress's default search form always gives the text field id="s",
-   regardless of its type attribute -- targeting that id (rather than
-   input[type='search']) is what actually matches it. */
 .site-search input#s {
 	width: 100%;
 	padding: 0.5rem;
@@ -400,7 +298,6 @@ hr {
 	border-color: var(--color-text);
 }
 
-
 .site-social {
 	list-style: none;
 	margin: 0;
@@ -411,11 +308,6 @@ hr {
 	gap: 0.6rem;
 }
 
-/* Each link shows only an icon -- the network's name is still in the
-   HTML (see header.php) for screen readers, just hidden visually via
-   .screen-reader-text below. Color comes from the link itself (not
-   the icon), so the icon always matches text/hover colors and any
-   future color scheme automatically. */
 .site-social a {
 	display: inline-flex;
 	align-items: center;
@@ -436,10 +328,6 @@ hr {
 	fill: currentColor;
 }
 
-/* Visually hides text while keeping it readable by screen readers --
-   the standard WordPress technique: instead of `display: none` (which
-   assistive tech also skips), this shrinks the element to 1px and
-   clips it, so it's still "there" for anything but human eyes. */
 .screen-reader-text {
 	position: absolute;
 	width: 1px;
@@ -451,10 +339,6 @@ hr {
 	white-space: nowrap;
 	border: 0;
 }
-
-/* ---------------------------------------------------------------------
-   Post stream (index.php).
-   --------------------------------------------------------------------- */
 
 .post-thumbnail img {
 	max-width: 100%;
@@ -494,10 +378,6 @@ hr {
 	display: flex;
 	gap: 1rem;
 }
-
-/* ---------------------------------------------------------------------
-   Single post (single.php).
-   --------------------------------------------------------------------- */
 
 .back-link {
 	display: inline-block;
@@ -577,10 +457,6 @@ hr {
 	gap: 1rem;
 	font-weight: 700;
 }
-
-/* ---------------------------------------------------------------------
-   Archive page (template-archive.php): every post, grouped by year.
-   --------------------------------------------------------------------- */
 
 .page-title {
 	font-size: 2rem;
