@@ -1,7 +1,7 @@
 <?php
 /**
  * Site header -- prints the big full-width title banner, then opens
- * the left-hand sidebar (nav, search, latest posts, social + RSS) and
+ * the left-hand sidebar (nav, latest posts, search, social + RSS) and
  * the two wrapper <div>s that make the left/right layout possible:
  *
  *   header.site-masthead    <- big "kelweaver.com" title banner, full
@@ -55,10 +55,6 @@
 			?>
 		</nav>
 
-		<div class="site-search">
-			<?php echo get_search_form( false ); ?>
-		</div>
-
 		<?php
 		/**
 		 * "Latest": a collapsible list of the 10 most recent posts, plus
@@ -100,14 +96,25 @@
 			</a>
 		</details>
 
+		<div class="site-search">
+			<?php echo get_search_form( false ); ?>
+		</div>
+
 		<ul class="site-social">
-			<?php foreach ( kelweaver_social_links() as $link ) : ?>
+			<?php
+			// Instagram URL comes from Appearance > Customize > Social
+			// Links, instead of being hardcoded here -- get_theme_mod()
+			// just reads whatever's saved there (empty string if nothing
+			// has been entered yet, in which case we skip the link).
+			$instagram_url = get_theme_mod( 'kelweaver_instagram_url' );
+			?>
+			<?php if ( $instagram_url ) : ?>
 				<li>
-					<a href="<?php echo esc_url( $link['url'] ); ?>">
-						<?php echo esc_html( $link['label'] ); ?>
+					<a href="<?php echo esc_url( $instagram_url ); ?>">
+						<?php esc_html_e( 'Instagram', 'kelweaver' ); ?>
 					</a>
 				</li>
-			<?php endforeach; ?>
+			<?php endif; ?>
 			<li>
 				<a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>">
 					<?php esc_html_e( 'RSS', 'kelweaver' ); ?>

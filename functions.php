@@ -48,26 +48,40 @@ function kelweaver_scripts() {
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
 /**
- * Social links for the sidebar.
+ * Social links: Instagram URL, editable from wp-admin.
  *
- * Kept as a plain PHP array (not a wp-admin menu) so it's simple to
- * read and edit directly -- add, remove, or relabel a row here and
- * it shows up in the sidebar. We can move this into the Customizer
- * later if you'd rather manage it from wp-admin instead of code.
+ * Rather than hardcoding a URL in PHP, this registers one setting in
+ * the Customizer (Appearance > Customize > Social Links in wp-admin)
+ * -- a plain text field Kelly can fill in himself. header.php reads
+ * it back with get_theme_mod( 'kelweaver_instagram_url' ), and shows
+ * nothing if it's empty rather than linking to a dead placeholder.
+ * More fields (say, a second network) would each be one more
+ * add_setting()/add_control() pair here.
  */
-function kelweaver_social_links() {
-	return array(
+function kelweaver_customize_register( $wp_customize ) {
+	$wp_customize->add_section(
+		'kelweaver_social_links',
 		array(
-			'label' => 'Twitter',
-			'url'   => 'https://twitter.com/',
-		),
+			'title'    => __( 'Social Links', 'kelweaver' ),
+			'priority' => 120,
+		)
+	);
+
+	$wp_customize->add_setting(
+		'kelweaver_instagram_url',
 		array(
-			'label' => 'Facebook',
-			'url'   => 'https://facebook.com/',
-		),
+			'default'           => '',
+			'sanitize_callback' => 'esc_url_raw',
+		)
+	);
+
+	$wp_customize->add_control(
+		'kelweaver_instagram_url',
 		array(
-			'label' => 'Instagram',
-			'url'   => 'https://instagram.com/',
-		),
+			'label'   => __( 'Instagram URL', 'kelweaver' ),
+			'section' => 'kelweaver_social_links',
+			'type'    => 'url',
+		)
 	);
 }
+add_action( 'customize_register', 'kelweaver_customize_register' );
