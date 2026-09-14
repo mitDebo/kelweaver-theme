@@ -230,12 +230,6 @@ hr {
 	background: rgba(27, 27, 26, 0.25);
 }
 
-/* The divider right under the nav menu sits flush against it (no
-   top margin) with the usual 1.5rem gap kept only below it. */
-.site-nav + .section-divider {
-	margin: 0 auto 1.5rem;
-}
-
 /* ---------------------------------------------------------------------
    Sidebar contents.
    --------------------------------------------------------------------- */

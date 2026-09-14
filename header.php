@@ -58,8 +58,6 @@
 			?>
 		</nav>
 
-		<hr class="section-divider">
-
 		<?php
 		/**
 		 * "Latest": a collapsible list of the 10 most recent posts, plus
