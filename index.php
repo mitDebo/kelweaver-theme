@@ -9,7 +9,13 @@ get_header();
 
 <?php if ( have_posts() ) : ?>
 
+	<?php $kelweaver_first_post = true; ?>
 	<?php while ( have_posts() ) : the_post(); ?>
+
+		<?php if ( ! $kelweaver_first_post ) : ?>
+			<hr class="post-divider">
+		<?php endif; ?>
+		<?php $kelweaver_first_post = false; ?>
 
 		<article <?php post_class(); ?> id="post-<?php the_ID(); ?>">
 

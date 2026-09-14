@@ -55,6 +55,8 @@ get_header();
 
 	</article>
 
+	<hr>
+
 	<nav class="post-nav" aria-label="<?php esc_attr_e( 'More posts', 'kelweaver' ); ?>">
 		<div class="post-nav-prev">
 			<?php previous_post_link( '%link', '&larr; %title' ); ?>
