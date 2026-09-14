@@ -252,18 +252,6 @@ hr {
 		display: inline-flex;
 	}
 
-	/* Collapsed by default at this width -- .is-open (added by
-	   js/nav-toggle.js when the button's clicked) is what reveals it.
-	   Everything else in the sidebar (Latest, search, social) is
-	   unaffected and keeps stacking normally underneath. */
-	.site-nav {
-		display: none;
-	}
-
-	.site-nav.is-open {
-		display: block;
-	}
-
 	.site-masthead {
 		padding-top: 2rem;
 	}
@@ -280,10 +268,18 @@ hr {
 		flex-direction: column;
 	}
 
+	/* The whole sidebar -- nav, Latest, search, social/RSS -- collapses
+	   as one unit at this width. Collapsed by default; .is-open (added
+	   by js/nav-toggle.js when the hamburger's clicked) reveals it. */
 	.site-sidebar {
 		position: static;
 		width: 100%;
 		border-bottom: 1px solid var(--color-border);
+		display: none;
+	}
+
+	.site-sidebar.is-open {
+		display: block;
 	}
 
 	.site-content {

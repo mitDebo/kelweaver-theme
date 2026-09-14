@@ -10,7 +10,12 @@
  *   .site-wrapper            <- outer flex container (see style.css)
  *     aside.site-sidebar    <- left column, sticky (stays put once you
  *                               scroll past the masthead) -- everything
- *                               below the banner in this file
+ *                               below the banner in this file. Below
+ *                               768px this whole aside is what the
+ *                               masthead's hamburger button shows and
+ *                               hides (see .nav-toggle below and the
+ *                               .site-sidebar rules in style.css) --
+ *                               not just the nav links inside it.
  *     div.site-content      <- right column, opened here, closed in footer.php
  *
  * Every template calls get_header() first, prints its own content,
@@ -38,16 +43,16 @@
 
 			<?php
 			/**
-			 * Nav toggle: only ever visible below the 768px breakpoint
-			 * (see style.css) -- on wider screens the nav already shows
-			 * in the sidebar, so this button is hidden by CSS and does
-			 * nothing. aria-expanded starts false and js/nav-toggle.js
-			 * flips it (and the matching site-nav class) on click; the
-			 * arrow's rotation is driven off aria-expanded too, so the
-			 * icon and the accessibility state can never drift apart.
+			 * Sidebar toggle: only ever visible below the 768px
+			 * breakpoint (see style.css) -- above that, the sidebar
+			 * already shows in full, so this button is hidden by CSS
+			 * and does nothing. Controls the WHOLE sidebar (nav,
+			 * Latest, search, social/RSS) as one unit, not just the
+			 * nav links -- js/nav-toggle.js toggles .is-open on
+			 * #site-sidebar and keeps aria-expanded in sync with it.
 			 */
 			?>
-			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-sidebar">
 				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
 				<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
 					<path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -65,7 +70,7 @@
 
 <div class="site-wrapper">
 
-	<aside class="site-sidebar">
+	<aside class="site-sidebar" id="site-sidebar">
 
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
