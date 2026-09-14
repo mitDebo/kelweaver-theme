@@ -36,7 +36,7 @@ get_header();
 				<?php $categories = get_the_category(); ?>
 				<?php if ( ! empty( $categories ) ) : ?>
 					<span class="post-category">
-						<?php echo esc_html( $categories[0]->name ); ?>
+						<?php echo esc_html( implode( ', ', wp_list_pluck( $categories, 'name' ) ) ); ?>
 					</span>
 				<?php endif; ?>
 			</div>
