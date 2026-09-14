@@ -124,8 +124,8 @@ hr {
 .site-masthead-inner {
 	max-width: var(--layout-max-width);
 	margin: 0 auto;
-	padding: 0 2rem 1.5rem;
-	border-bottom: 1px solid var(--color-border);
+	padding: 0 2rem;
+	display: flow-root;
 }
 
 .site-masthead .site-title {
@@ -137,7 +137,7 @@ hr {
 }
 
 .site-masthead .site-title a {
-	color: var(--color-text);
+	color: var(--color-accent);
 }
 
 .site-masthead .site-title a:hover {
@@ -198,7 +198,7 @@ hr {
 	}
 
 	.site-masthead-inner {
-		padding: 0 1.5rem 1rem;
+		padding: 0 1.5rem;
 	}
 
 	.site-wrapper {
@@ -214,6 +214,20 @@ hr {
 	.site-content {
 		max-width: 100%;
 	}
+}
+
+/* A second divider style, distinct from the generic `hr` rule above
+   (post separators etc.) -- thinner (2px), solid instead of faded at
+   the edges. Used under the masthead and above the sidebar's search
+   box; give it a class rather than styling plain `hr` a second way,
+   since the generic rule above still applies everywhere else,
+   including anything a post's own content adds. */
+.section-divider {
+	border: none;
+	width: 75%;
+	margin: 1.5rem auto;
+	height: 2px;
+	background: rgba(27, 27, 26, 0.25);
 }
 
 /* ---------------------------------------------------------------------

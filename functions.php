@@ -50,6 +50,43 @@ function kelweaver_scripts() {
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
 /**
+ * Customizes the browser-tab <title> WordPress builds automatically
+ * (theme support for 'title-tag' above is what turns this on -- it's
+ * what actually prints the <title> tag into <head>, we're just
+ * changing what text goes inside it).
+ *
+ * Everywhere except the homepage: "<page title> | kelweaver.com".
+ * $title['title'] arrives already set to whatever WordPress decided
+ * the page's own title is -- a post's title, "Search Results for
+ * ...", "Page not found", a category name, and so on -- so this just
+ * adds the site name after it and drops the tagline WordPress
+ * sometimes adds alongside it.
+ *
+ * On the homepage: just "kelweaver.com" by itself, since
+ * "kelweaver.com | kelweaver.com" would be redundant.
+ */
+function kelweaver_document_title_parts( $title ) {
+	if ( is_front_page() ) {
+		return array( 'title' => get_bloginfo( 'name', 'display' ) );
+	}
+
+	return array(
+		'title' => isset( $title['title'] ) ? $title['title'] : '',
+		'site'  => get_bloginfo( 'name', 'display' ),
+	);
+}
+add_filter( 'document_title_parts', 'kelweaver_document_title_parts' );
+
+/**
+ * WordPress joins the pieces above with " - " by default; use "|"
+ * instead to match "<page title> | kelweaver.com".
+ */
+function kelweaver_document_title_separator() {
+	return '|';
+}
+add_filter( 'document_title_separator', 'kelweaver_document_title_separator' );
+
+/**
  * Social/profile links the sidebar knows how to show. Each key becomes
  * a Customizer field named kelweaver_{key}_url -- add a line here to
  * offer a new network anywhere on the site; nothing else to wire up.

@@ -38,6 +38,7 @@
 		<?php if ( $description ) : ?>
 			<p class="site-description"><?php echo $description; ?></p>
 		<?php endif; ?>
+		<hr class="section-divider">
 	</div>
 </header>
 
@@ -95,6 +96,8 @@
 				<li><a href="<?php echo esc_url( $archive_url ); ?>"><?php esc_html_e( 'Browse all', 'kelweaver' ); ?> &rarr;</a></li>
 			</ul>
 		</details>
+
+		<hr class="section-divider">
 
 		<div class="site-search">
 			<?php echo get_search_form( false ); ?>
