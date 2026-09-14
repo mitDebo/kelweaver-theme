@@ -48,15 +48,26 @@ function kelweaver_scripts() {
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
 /**
- * Social links: Instagram URL, editable from wp-admin.
- *
- * Rather than hardcoding a URL in PHP, this registers one setting in
- * the Customizer (Appearance > Customize > Social Links in wp-admin)
- * -- a plain text field Kelly can fill in himself. header.php reads
- * it back with get_theme_mod( 'kelweaver_instagram_url' ), and shows
- * nothing if it's empty rather than linking to a dead placeholder.
- * More fields (say, a second network) would each be one more
- * add_setting()/add_control() pair here.
+ * Social networks the sidebar knows how to link to. Each key becomes
+ * a Customizer setting named kelweaver_{key}_url -- add a line here
+ * to offer a new network anywhere on the site; nothing else to wire
+ * up. Order here is also the order they'll appear in wp-admin (and,
+ * since header.php loops over this same list, in the sidebar too).
+ */
+function kelweaver_social_networks() {
+	return array(
+		'instagram' => __( 'Instagram', 'kelweaver' ),
+		'twitter'   => __( 'Twitter / X', 'kelweaver' ),
+		'facebook'  => __( 'Facebook', 'kelweaver' ),
+	);
+}
+
+/**
+ * Registers one URL setting per network above in the Customizer
+ * (Appearance > Customize > Social Links in wp-admin) -- plain text
+ * fields Kelly fills in himself, instead of hardcoded links in PHP.
+ * header.php reads them back with get_theme_mod(), and shows nothing
+ * for any network left blank, rather than linking to a placeholder.
  */
 function kelweaver_customize_register( $wp_customize ) {
 	$wp_customize->add_section(
@@ -67,21 +78,26 @@ function kelweaver_customize_register( $wp_customize ) {
 		)
 	);
 
-	$wp_customize->add_setting(
-		'kelweaver_instagram_url',
-		array(
-			'default'           => '',
-			'sanitize_callback' => 'esc_url_raw',
-		)
-	);
+	foreach ( kelweaver_social_networks() as $key => $label ) {
+		$setting_id = 'kelweaver_' . $key . '_url';
 
-	$wp_customize->add_control(
-		'kelweaver_instagram_url',
-		array(
-			'label'   => __( 'Instagram URL', 'kelweaver' ),
-			'section' => 'kelweaver_social_links',
-			'type'    => 'url',
-		)
-	);
+		$wp_customize->add_setting(
+			$setting_id,
+			array(
+				'default'           => '',
+				'sanitize_callback' => 'esc_url_raw',
+			)
+		);
+
+		$wp_customize->add_control(
+			$setting_id,
+			array(
+				/* translators: %s: social network name, e.g. "Instagram". */
+				'label'   => sprintf( __( '%s URL', 'kelweaver' ), $label ),
+				'section' => 'kelweaver_social_links',
+				'type'    => 'url',
+			)
+		);
+	}
 }
 add_action( 'customize_register', 'kelweaver_customize_register' );

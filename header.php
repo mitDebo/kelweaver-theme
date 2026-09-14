@@ -100,19 +100,23 @@
 
 		<ul class="site-social">
 			<?php
-			// Instagram URL comes from Appearance > Customize > Social
-			// Links, instead of being hardcoded here -- get_theme_mod()
-			// just reads whatever's saved there (empty string if nothing
-			// has been entered yet, in which case we skip the link).
-			$instagram_url = get_theme_mod( 'kelweaver_instagram_url' );
-			?>
-			<?php if ( $instagram_url ) : ?>
+			// Each network's URL comes from Appearance > Customize >
+			// Social Links, instead of being hardcoded here --
+			// get_theme_mod() just reads whatever's saved there (empty
+			// string if nothing's been entered, in which case that one
+			// network is skipped rather than linking nowhere).
+			foreach ( kelweaver_social_networks() as $key => $label ) :
+				$url = get_theme_mod( 'kelweaver_' . $key . '_url' );
+				if ( ! $url ) {
+					continue;
+				}
+				?>
 				<li>
-					<a href="<?php echo esc_url( $instagram_url ); ?>">
-						<?php esc_html_e( 'Instagram', 'kelweaver' ); ?>
+					<a href="<?php echo esc_url( $url ); ?>">
+						<?php echo esc_html( $label ); ?>
 					</a>
 				</li>
-			<?php endif; ?>
+			<?php endforeach; ?>
 			<li>
 				<a href="<?php echo esc_url( get_bloginfo( 'rss2_url' ) ); ?>">
 					<?php esc_html_e( 'RSS', 'kelweaver' ); ?>
