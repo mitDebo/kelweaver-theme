@@ -104,7 +104,7 @@ hr {
 	border: none;
 	width: 75%;
 	margin: 1.5rem auto;
-	height: 4px;
+	height: 2px;
 	background: linear-gradient(to right, transparent, rgba(27, 27, 26, 0.25), transparent);
 }
 
@@ -216,25 +216,22 @@ hr {
 	}
 }
 
-/* A second divider style, distinct from the generic `hr` rule above
-   (post separators etc.) -- thinner (2px), solid instead of faded at
-   the edges. Used under the masthead and above the sidebar's search
-   box; give it a class rather than styling plain `hr` a second way,
-   since the generic rule above still applies everywhere else,
-   including anything a post's own content adds. */
-.section-divider {
-	border: none;
-	width: 75%;
-	margin: 1.5rem auto;
-	height: 2px;
-	background: rgba(27, 27, 26, 0.25);
-}
+/* Every divider on the site now looks the same (see the plain `hr`
+   rule above) -- .section-divider doesn't need its own copy of that
+   look anymore. It's kept as a marker class purely so a couple of
+   specific placements can still override the default width/margin
+   without touching dividers elsewhere (post separators, etc.). */
 
-/* The masthead's copy of this divider runs the full width of its
-   container instead of the usual 75% -- everything else about it
-   (thickness, color, spacing) stays the same. */
+/* The masthead's divider runs the full width of its container
+   instead of the usual 75%. */
 .site-masthead-inner .section-divider {
 	width: 100%;
+}
+
+/* The divider right under the nav menu sits closer on both sides
+   than the others (1rem instead of the usual 1.5rem). */
+.site-nav + .section-divider {
+	margin: 1rem auto;
 }
 
 /* ---------------------------------------------------------------------
