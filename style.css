@@ -266,7 +266,7 @@ hr {
 	   whatever's below it (the hamburger's sidebar, or the post
 	   stream) on narrow screens. */
 	.site-masthead-inner .section-divider {
-		margin-bottom: 1rem;
+		margin-bottom: 0.5rem;
 	}
 
 	.site-footer {
