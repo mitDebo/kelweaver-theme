@@ -35,6 +35,11 @@ Text Domain: kelweaver
 
 	--sidebar-width: 260px;
 	--content-max-width: 68ch;
+	/* Sidebar + content together, as a single block -- used to center
+	   that whole two-column layout in the viewport (see .site-wrapper
+	   and .site-masthead-inner below), instead of letting the content
+	   column just trail off with empty space to its right. */
+	--layout-max-width: calc(var(--sidebar-width) + var(--content-max-width));
 }
 
 /* A plain reset: browsers apply their own default spacing to things
@@ -93,7 +98,17 @@ h3 {
    --------------------------------------------------------------------- */
 
 .site-masthead {
-	padding: 3rem 2rem 1.5rem;
+	padding-top: 3rem;
+}
+
+/* The dividing line under the title used to run the full width of the
+   browser window. Constraining and centering this inner box the same
+   way as .site-wrapper below makes the line stop exactly where the
+   sidebar+content block does, instead of spanning past it. */
+.site-masthead-inner {
+	max-width: var(--layout-max-width);
+	margin: 0 auto;
+	padding: 0 2rem 1.5rem;
 	border-bottom: 1px solid var(--color-border);
 }
 
@@ -106,6 +121,10 @@ h3 {
 
 .site-masthead .site-title a {
 	color: var(--color-text);
+}
+
+.site-masthead .site-title a:hover {
+	text-decoration: none;
 }
 
 .site-masthead .site-description {
@@ -127,6 +146,8 @@ h3 {
 	flex-direction: row;
 	align-items: flex-start;
 	min-height: 100vh;
+	max-width: var(--layout-max-width);
+	margin: 0 auto;
 }
 
 .site-sidebar {
@@ -142,9 +163,25 @@ h3 {
 	max-width: var(--content-max-width);
 }
 
+/* Justified text lines up both the left AND right edges of each line
+   (instead of leaving a ragged right edge), by stretching the spacing
+   between words. `hyphens: auto` goes with it for a reason: without
+   it, justify can stretch a short line's word-gaps into ugly wide
+   rivers of whitespace when a long word doesn't quite fit -- letting
+   the browser hyphenate words at line breaks avoids that. */
+.site-content p {
+	text-align: justify;
+	hyphens: auto;
+	overflow-wrap: break-word;
+}
+
 @media (max-width: 768px) {
 	.site-masthead {
-		padding: 2rem 1.5rem 1rem;
+		padding-top: 2rem;
+	}
+
+	.site-masthead-inner {
+		padding: 0 1.5rem 1rem;
 	}
 
 	.site-wrapper {

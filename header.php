@@ -28,15 +28,17 @@
 <?php wp_body_open(); ?>
 
 <header class="site-masthead">
-	<p class="site-title">
-		<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-			<?php bloginfo( 'name' ); ?>
-		</a>
-	</p>
-	<?php $description = get_bloginfo( 'description', 'display' ); ?>
-	<?php if ( $description ) : ?>
-		<p class="site-description"><?php echo $description; ?></p>
-	<?php endif; ?>
+	<div class="site-masthead-inner">
+		<p class="site-title">
+			<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
+				<?php bloginfo( 'name' ); ?>
+			</a>
+		</p>
+		<?php $description = get_bloginfo( 'description', 'display' ); ?>
+		<?php if ( $description ) : ?>
+			<p class="site-description"><?php echo $description; ?></p>
+		<?php endif; ?>
+	</div>
 </header>
 
 <div class="site-wrapper">
