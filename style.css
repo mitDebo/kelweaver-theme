@@ -64,7 +64,7 @@ body {
 	   no such surprise: what you see in the file is exactly what paints. */
 	background-image: url("grain.png");
 	background-repeat: repeat;
-	background-size: 150px 150px;
+	background-size: 200px 200px;
 	background-blend-mode: overlay;
 }
 
@@ -173,6 +173,30 @@ h3 {
 	border: 1px solid var(--color-border);
 	padding: 0.4rem 0.75rem;
 	cursor: pointer;
+}
+
+/* Temporary dev tool: lets us A/B the body font live. Remove this
+   block (and the matching bits in header.php/functions.php/js/) once
+   a font is chosen for good. */
+.site-font-toggle {
+	margin-bottom: 2rem;
+	font-size: 0.85rem;
+	color: var(--color-muted);
+}
+
+.site-font-toggle label {
+	display: flex;
+	align-items: center;
+	gap: 0.4rem;
+	cursor: pointer;
+}
+
+/* When the checkbox is on, JS adds this class to <body>. Redefining
+   --font-body here (rather than writing a second font-family rule)
+   means every element that reads var(--font-body) -- now or later --
+   switches automatically, with nothing else to keep in sync. */
+body.compare-georgia {
+	--font-body: Georgia, 'Times New Roman', Times, serif;
 }
 
 .site-social {
