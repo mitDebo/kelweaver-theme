@@ -100,20 +100,23 @@
 
 		<ul class="site-social">
 			<?php
-			// Each network's URL comes from Appearance > Customize >
+			// Each network's value comes from Appearance > Customize >
 			// Social Links, instead of being hardcoded here --
 			// get_theme_mod() just reads whatever's saved there (empty
 			// string if nothing's been entered, in which case that one
-			// network is skipped rather than linking nowhere).
-			foreach ( kelweaver_social_networks() as $key => $label ) :
-				$url = get_theme_mod( 'kelweaver_' . $key . '_url' );
-				if ( ! $url ) {
+			// network is skipped rather than linking nowhere). Email is
+			// stored as a plain address and turned into a mailto: link
+			// here; everything else is used as-is.
+			foreach ( kelweaver_social_networks() as $key => $network ) :
+				$value = get_theme_mod( 'kelweaver_' . $key . '_url' );
+				if ( ! $value ) {
 					continue;
 				}
+				$href = ( 'email' === $network['type'] ) ? 'mailto:' . $value : $value;
 				?>
 				<li>
-					<a href="<?php echo esc_url( $url ); ?>">
-						<?php echo esc_html( $label ); ?>
+					<a href="<?php echo esc_url( $href ); ?>">
+						<?php echo esc_html( $network['label'] ); ?>
 					</a>
 				</li>
 			<?php endforeach; ?>
