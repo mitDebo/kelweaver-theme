@@ -19,6 +19,8 @@
 	</div>
 </footer>
 
+<a href="https://tarpit.kdubs.tech" rel="nofollow" aria-hidden="true" tabindex="-1" class="screen-reader-text">do not follow</a>
+
 <?php wp_footer(); ?>
 </body>
 </html>
