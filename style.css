@@ -223,15 +223,17 @@ hr {
    without touching dividers elsewhere (post separators, etc.). */
 
 /* The masthead's divider runs the full width of its container
-   instead of the usual 75%. */
+   instead of the usual 75%, and stays solid rather than fading at
+   the edges like every other divider on the site. */
 .site-masthead-inner .section-divider {
 	width: 100%;
+	background: rgba(27, 27, 26, 0.25);
 }
 
-/* The divider right under the nav menu sits closer on both sides
-   than the others (1rem instead of the usual 1.5rem). */
+/* The divider right under the nav menu sits flush against it (no
+   top margin) with the usual 1.5rem gap kept only below it. */
 .site-nav + .section-divider {
-	margin: 1rem auto;
+	margin: 0 auto 1.5rem;
 }
 
 /* ---------------------------------------------------------------------
