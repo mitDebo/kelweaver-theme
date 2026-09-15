@@ -3,6 +3,7 @@
 <head>
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>(function(){try{var t=localStorage.getItem('kelweaver_theme');if(t)document.documentElement.setAttribute('data-theme',t);}catch(e){}})();</script>
 	<?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -17,12 +18,20 @@
 				</a>
 			</p>
 
-			<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-sidebar">
-				<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
-				<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-					<path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-				</svg>
-			</button>
+			<div class="masthead-controls">
+				<label class="screen-reader-text" for="theme-select"><?php esc_html_e( 'Color scheme', 'kelweaver' ); ?></label>
+				<select id="theme-select" class="theme-select">
+					<option value="paperback"><?php esc_html_e( 'Paperback', 'kelweaver' ); ?></option>
+					<option value="night"><?php esc_html_e( 'Night', 'kelweaver' ); ?></option>
+				</select>
+
+				<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-sidebar">
+					<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
+					<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+						<path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+					</svg>
+				</button>
+			</div>
 		</div>
 
 		<?php $description = get_bloginfo( 'description', 'display' ); ?>
@@ -36,6 +45,15 @@
 <div class="site-wrapper">
 
 	<aside class="site-sidebar" id="site-sidebar">
+
+		<div class="accent-test">
+			<label class="screen-reader-text" for="accent-test-select"><?php esc_html_e( 'Night accent (test)', 'kelweaver' ); ?></label>
+			<select id="accent-test-select" class="accent-test-select">
+				<option value="amber"><?php esc_html_e( 'Amber', 'kelweaver' ); ?></option>
+				<option value="cyan"><?php esc_html_e( 'Cyan', 'kelweaver' ); ?></option>
+				<option value="coral"><?php esc_html_e( 'Coral', 'kelweaver' ); ?></option>
+			</select>
+		</div>
 
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php

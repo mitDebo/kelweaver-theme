@@ -32,6 +32,13 @@ function kelweaver_scripts() {
 		filemtime( get_stylesheet_directory() . '/js/nav-toggle.js' ),
 		true
 	);
+	wp_enqueue_script(
+		'kelweaver-theme-switcher',
+		get_stylesheet_directory_uri() . '/js/theme-switcher.js',
+		array(),
+		filemtime( get_stylesheet_directory() . '/js/theme-switcher.js' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 
