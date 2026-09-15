@@ -55,21 +55,6 @@
 			</select>
 		</div>
 
-		<div class="font-test">
-			<label class="screen-reader-text" for="font-test-select"><?php esc_html_e( 'Night font (test)', 'kelweaver' ); ?></label>
-			<select id="font-test-select" class="font-test-select">
-				<option value="system"><?php esc_html_e( 'System UI', 'kelweaver' ); ?></option>
-				<option value="helvetica"><?php esc_html_e( 'Helvetica / Arial', 'kelweaver' ); ?></option>
-				<option value="inter" selected><?php esc_html_e( 'Inter', 'kelweaver' ); ?></option>
-				<option value="plex"><?php esc_html_e( 'IBM Plex Sans', 'kelweaver' ); ?></option>
-				<option value="work-sans"><?php esc_html_e( 'Work Sans', 'kelweaver' ); ?></option>
-				<option value="manrope"><?php esc_html_e( 'Manrope', 'kelweaver' ); ?></option>
-				<option value="space-grotesk"><?php esc_html_e( 'Space Grotesk', 'kelweaver' ); ?></option>
-				<option value="dm-sans"><?php esc_html_e( 'DM Sans', 'kelweaver' ); ?></option>
-				<option value="source-sans"><?php esc_html_e( 'Source Sans 3', 'kelweaver' ); ?></option>
-			</select>
-		</div>
-
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
 			wp_nav_menu(

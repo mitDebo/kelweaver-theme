@@ -29,28 +29,19 @@ Text Domain: kelweaver
 
 :root[data-theme="night"] {
 	--color-bg: #24272e;
-	--color-text: #e7e4dd;
+	--color-text: #cbccd0;
 	--color-accent: var(--color-accent-amber);
 	--color-accent-amber: #d9a441;
 	--color-accent-cyan: #4fd1c5;
 	--color-accent-coral: #d97a5f;
 	--color-heading-accent: #ffffff;
 	--color-border: rgba(255, 255, 255, 0.14);
-	--color-muted: rgba(231, 228, 221, 0.62);
+	--color-muted: rgba(203, 204, 208, 0.62);
 	--color-surface: #2e323a;
 	--color-divider: rgba(255, 255, 255, 0.2);
 
-	--font-option-system: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-	--font-option-helvetica: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	--font-option-inter: 'Inter', sans-serif;
-	--font-option-plex: 'IBM Plex Sans', sans-serif;
-	--font-option-work-sans: 'Work Sans', sans-serif;
-	--font-option-manrope: 'Manrope', sans-serif;
-	--font-option-space-grotesk: 'Space Grotesk', sans-serif;
-	--font-option-dm-sans: 'DM Sans', sans-serif;
-	--font-option-source-sans: 'Source Sans 3', sans-serif;
-	--font-body: var(--font-option-inter);
-	--font-display: var(--font-option-inter);
+	--font-body: 'Source Sans 3', sans-serif;
+	--font-display: 'Source Sans 3', sans-serif;
 }
 
 :root[data-theme="night"] body {
@@ -303,25 +294,6 @@ hr {
 	padding: 0.4rem 0.5rem;
 }
 
-.font-test {
-	display: none;
-	margin-bottom: 1.5rem;
-}
-
-:root[data-theme="night"] .font-test {
-	display: block;
-}
-
-.font-test-select {
-	width: 100%;
-	font-family: inherit;
-	font-size: 0.8rem;
-	color: var(--color-text);
-	background: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: 4px;
-	padding: 0.4rem 0.5rem;
-}
 
 .site-latest {
 	margin-bottom: 2rem;

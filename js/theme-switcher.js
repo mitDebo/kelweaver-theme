@@ -1,7 +1,6 @@
 document.addEventListener( 'DOMContentLoaded', function () {
 	var themeSelect = document.getElementById( 'theme-select' );
 	var accentSelect = document.getElementById( 'accent-test-select' );
-	var fontSelect = document.getElementById( 'font-test-select' );
 
 	function applyAccent( value ) {
 		document.documentElement.style.setProperty( '--color-accent', 'var(--color-accent-' + value + ')' );
@@ -9,16 +8,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 
 	function clearAccent() {
 		document.documentElement.style.removeProperty( '--color-accent' );
-	}
-
-	function applyFont( value ) {
-		document.documentElement.style.setProperty( '--font-body', 'var(--font-option-' + value + ')' );
-		document.documentElement.style.setProperty( '--font-display', 'var(--font-option-' + value + ')' );
-	}
-
-	function clearFont() {
-		document.documentElement.style.removeProperty( '--font-body' );
-		document.documentElement.style.removeProperty( '--font-display' );
 	}
 
 	if ( themeSelect ) {
@@ -29,13 +18,8 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		var initialTheme = storedTheme || 'paperback';
 		themeSelect.value = initialTheme;
 
-		if ( 'night' === initialTheme ) {
-			if ( accentSelect ) {
-				applyAccent( accentSelect.value );
-			}
-			if ( fontSelect ) {
-				applyFont( fontSelect.value );
-			}
+		if ( 'night' === initialTheme && accentSelect ) {
+			applyAccent( accentSelect.value );
 		}
 
 		themeSelect.addEventListener( 'change', function () {
@@ -43,14 +27,10 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			if ( 'paperback' === value ) {
 				document.documentElement.removeAttribute( 'data-theme' );
 				clearAccent();
-				clearFont();
 			} else {
 				document.documentElement.setAttribute( 'data-theme', value );
 				if ( accentSelect ) {
 					applyAccent( accentSelect.value );
-				}
-				if ( fontSelect ) {
-					applyFont( fontSelect.value );
 				}
 			}
 			try {
@@ -63,14 +43,6 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		accentSelect.addEventListener( 'change', function () {
 			if ( themeSelect && 'night' === themeSelect.value ) {
 				applyAccent( accentSelect.value );
-			}
-		} );
-	}
-
-	if ( fontSelect ) {
-		fontSelect.addEventListener( 'change', function () {
-			if ( themeSelect && 'night' === themeSelect.value ) {
-				applyFont( fontSelect.value );
 			}
 		} );
 	}
