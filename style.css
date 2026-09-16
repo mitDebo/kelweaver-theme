@@ -169,7 +169,10 @@ hr {
 .theme-swatch-list {
 	list-style: none;
 	margin: 0;
-	padding: 0.4rem;
+	/* No right padding: this keeps each option's circle flush with the
+	   list's own right edge, which lines up with the toggle circle above
+	   (it has no inset either), so every circle sits in one column. */
+	padding: 0.4rem 0 0.4rem 0.4rem;
 	position: absolute;
 	top: 100%;
 	right: 0;
@@ -207,7 +210,7 @@ hr {
 	color: var(--color-text);
 	background: none;
 	border: none;
-	padding: 0.3rem 0.4rem;
+	padding: 0.3rem 0 0.3rem 0.4rem;
 	border-radius: 4px;
 	cursor: pointer;
 }
