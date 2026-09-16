@@ -2,3 +2,6 @@ spec/
 docker-compose.yml
 .env
 kelweaver-theme.zip
+
+# stray zip temp files (leftover from in-place zip -r failures)
+/zi??????*
