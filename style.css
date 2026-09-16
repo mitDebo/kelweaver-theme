@@ -56,7 +56,13 @@ Text Domain: kelweaver
 
 :root[data-theme="terminal"] {
 	--color-bg: var(--swatch-terminal-bg);
+	--color-text: var(--swatch-terminal-accent);
 	--color-accent: var(--swatch-terminal-accent);
+	--color-heading-accent: var(--swatch-terminal-accent);
+	--color-border: rgba(0, 255, 65, 0.4);
+	--color-muted: rgba(0, 255, 65, 0.55);
+	--color-surface: #000000;
+	--color-divider: rgba(0, 255, 65, 0.3);
 }
 
 :root[data-theme="terminal"] body {
@@ -64,12 +70,23 @@ Text Domain: kelweaver
 	background-color: #000000;
 }
 
-:root[data-theme="terminal"] .site-masthead,
+:root[data-theme="terminal"] .site-masthead-inner,
 :root[data-theme="terminal"] .site-wrapper,
-:root[data-theme="terminal"] .site-footer-inner > hr.section-divider,
-:root[data-theme="terminal"] .site-social,
-:root[data-theme="terminal"] .site-copyright {
-	display: none;
+:root[data-theme="terminal"] .site-footer-inner {
+	max-width: var(--layout-max-width);
+	background-color: #000000;
+	border-left: 1px solid var(--swatch-terminal-accent);
+	border-right: 1px solid var(--swatch-terminal-accent);
+}
+
+:root[data-theme="terminal"] .site-masthead-inner {
+	border-top: 1px solid var(--swatch-terminal-accent);
+	padding-top: 2rem;
+}
+
+:root[data-theme="terminal"] .site-footer-inner {
+	border-bottom: 1px solid var(--swatch-terminal-accent);
+	padding-bottom: 1.5rem;
 }
 
 *,
@@ -986,7 +1003,3 @@ hr {
 	display: block;
 }
 
-:root[data-theme="terminal"] .theme-swatch-list {
-	bottom: auto;
-	top: 100%;
-}
