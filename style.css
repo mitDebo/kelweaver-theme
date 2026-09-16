@@ -267,7 +267,11 @@ hr {
 }
 
 :root[data-theme="night"] .site-wrapper {
-	max-width: var(--content-max-width);
+	max-width: var(--layout-max-width);
+}
+
+:root[data-theme="night"] .site-content {
+	max-width: none;
 }
 
 .site-sidebar {
