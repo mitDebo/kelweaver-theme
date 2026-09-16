@@ -5,6 +5,7 @@
 <footer class="site-footer">
 	<div class="site-footer-inner">
 		<hr class="section-divider">
+		<?php get_template_part( 'template-parts/social-icons', null, array( 'class' => 'site-social--footer' ) ); ?>
 		<p class="site-copyright">
 			&copy; <?php echo esc_html( date_i18n( 'Y' ) ); ?> Kelly Weaver
 		</p>
