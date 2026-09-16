@@ -15,9 +15,7 @@
 	<div class="site-masthead-inner">
 		<div class="site-masthead-row">
 			<p class="site-title">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>">
-					<?php bloginfo( 'name' ); ?>
-				</a>
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
 			</p>
 
 			<div class="masthead-controls">
