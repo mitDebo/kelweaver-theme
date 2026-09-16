@@ -189,13 +189,8 @@ hr {
 	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.theme-switcher:hover .theme-swatch-list,
-.theme-switcher:focus-within .theme-swatch-list {
+.theme-switcher.is-open .theme-swatch-list {
 	display: flex;
-}
-
-.theme-switcher.is-suppressed .theme-swatch-list {
-	display: none !important;
 }
 
 .theme-swatch-list {

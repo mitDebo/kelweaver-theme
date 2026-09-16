@@ -15,49 +15,51 @@ document.addEventListener( 'DOMContentLoaded', function () {
 		} catch ( e ) {}
 	}
 
+	function openList() {
+		switcher.classList.add( 'is-open' );
+		toggle.setAttribute( 'aria-expanded', 'true' );
+	}
+
+	function closeList() {
+		switcher.classList.remove( 'is-open' );
+		toggle.setAttribute( 'aria-expanded', 'false' );
+	}
+
 	if ( toggle && list && switcher ) {
 		var storedTheme = null;
 		try {
 			storedTheme = localStorage.getItem( 'kelweaver_theme' );
 		} catch ( e ) {}
-		var initialTheme = storedTheme || 'paperback';
-		setTheme( initialTheme );
+		setTheme( storedTheme || 'paperback' );
+
+		toggle.addEventListener( 'click', function ( event ) {
+			event.stopPropagation();
+			if ( switcher.classList.contains( 'is-open' ) ) {
+				closeList();
+			} else {
+				openList();
+			}
+		} );
 
 		options.forEach( function ( option ) {
-			option.addEventListener( 'click', function () {
+			option.addEventListener( 'click', function ( event ) {
+				event.stopPropagation();
 				setTheme( option.getAttribute( 'data-theme-value' ) );
-				toggle.setAttribute( 'aria-expanded', 'false' );
-
-				// Force the list closed right away, even though the mouse may
-				// still be hovering it or focus may still be inside it.
-				switcher.classList.add( 'is-suppressed' );
-				if ( document.activeElement && switcher.contains( document.activeElement ) ) {
-					document.activeElement.blur();
-				}
+				closeList();
 			} );
 		} );
 
-		switcher.addEventListener( 'mouseenter', function () {
-			toggle.setAttribute( 'aria-expanded', 'true' );
+		document.addEventListener( 'click', function ( event ) {
+			if ( ! switcher.contains( event.target ) ) {
+				closeList();
+			}
 		} );
 
-		switcher.addEventListener( 'mouseleave', function () {
-			toggle.setAttribute( 'aria-expanded', 'false' );
-			// Once the mouse actually leaves, the next hover should open it again.
-			switcher.classList.remove( 'is-suppressed' );
-		} );
-
-		switcher.addEventListener( 'focusin', function () {
-			toggle.setAttribute( 'aria-expanded', 'true' );
-		} );
-
-		switcher.addEventListener( 'focusout', function () {
-			window.setTimeout( function () {
-				if ( ! switcher.contains( document.activeElement ) ) {
-					toggle.setAttribute( 'aria-expanded', 'false' );
-					switcher.classList.remove( 'is-suppressed' );
-				}
-			}, 0 );
+		document.addEventListener( 'keydown', function ( event ) {
+			if ( 'Escape' === event.key && switcher.classList.contains( 'is-open' ) ) {
+				closeList();
+				toggle.focus();
+			}
 		} );
 	}
 } );
