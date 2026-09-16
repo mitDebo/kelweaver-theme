@@ -886,9 +886,9 @@ hr {
 		grid-template-columns: 1fr;
 		row-gap: 0.75rem;
 		grid-template-areas:
-			"thumb"
 			"title"
 			"meta"
+			"thumb"
 			"excerpt";
 	}
 
