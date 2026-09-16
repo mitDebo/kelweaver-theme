@@ -9,6 +9,8 @@
 <body <?php body_class(); ?>>
 <?php wp_body_open(); ?>
 
+<canvas id="matrix-rain" aria-hidden="true"></canvas>
+
 <header class="site-masthead">
 	<div class="site-masthead-inner">
 		<div class="site-masthead-row">

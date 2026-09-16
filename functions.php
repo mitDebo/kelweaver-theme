@@ -39,6 +39,13 @@ function kelweaver_scripts() {
 		filemtime( get_stylesheet_directory() . '/js/theme-switcher.js' ),
 		true
 	);
+	wp_enqueue_script(
+		'kelweaver-matrix-rain',
+		get_stylesheet_directory_uri() . '/js/matrix-rain.js',
+		array(),
+		filemtime( get_stylesheet_directory() . '/js/matrix-rain.js' ),
+		true
+	);
 }
 add_action( 'wp_enqueue_scripts', 'kelweaver_scripts' );
 

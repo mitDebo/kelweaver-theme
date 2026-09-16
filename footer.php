@@ -27,6 +27,12 @@
 							<span class="theme-swatch theme-swatch-moonlight" aria-hidden="true"></span>
 						</button>
 					</li>
+					<li>
+						<button type="button" class="theme-swatch-option" data-theme-value="terminal">
+							<span class="theme-swatch-option-label"><?php esc_html_e( 'Terminal', 'kelweaver' ); ?></span>
+							<span class="theme-swatch theme-swatch-terminal" aria-hidden="true"></span>
+						</button>
+					</li>
 				</ul>
 			</div>
 		</div>

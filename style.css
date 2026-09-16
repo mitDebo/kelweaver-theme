@@ -14,6 +14,8 @@ Text Domain: kelweaver
 	--swatch-paperback-accent: #8c3a2b;
 	--swatch-moonlight-bg: #24272e;
 	--swatch-moonlight-accent: #70b3ff;
+	--swatch-terminal-bg: #000000;
+	--swatch-terminal-accent: #00ff41;
 
 	--color-bg: var(--swatch-paperback-bg);
 	--color-text: #1b1b1a;
@@ -50,6 +52,24 @@ Text Domain: kelweaver
 
 :root[data-theme="moonlight"] body {
 	background-image: none;
+}
+
+:root[data-theme="terminal"] {
+	--color-bg: var(--swatch-terminal-bg);
+	--color-accent: var(--swatch-terminal-accent);
+}
+
+:root[data-theme="terminal"] body {
+	background-image: none;
+	background-color: #000000;
+}
+
+:root[data-theme="terminal"] .site-masthead,
+:root[data-theme="terminal"] .site-wrapper,
+:root[data-theme="terminal"] .site-footer-inner > hr.section-divider,
+:root[data-theme="terminal"] .site-social,
+:root[data-theme="terminal"] .site-copyright {
+	display: none;
 }
 
 *,
@@ -231,6 +251,11 @@ hr {
 .theme-swatch-moonlight {
 	background: var(--swatch-moonlight-bg);
 	border-color: var(--swatch-moonlight-accent);
+}
+
+.theme-swatch-terminal {
+	background: var(--swatch-terminal-bg);
+	border-color: var(--swatch-terminal-accent);
 }
 
 .nav-toggle {
@@ -945,4 +970,23 @@ hr {
 	.post-list-item .post-thumbnail {
 		width: 100%;
 	}
+}
+
+#matrix-rain {
+	display: none;
+	position: fixed;
+	inset: 0;
+	width: 100vw;
+	height: 100vh;
+	z-index: -1;
+	pointer-events: none;
+}
+
+:root[data-theme="terminal"] #matrix-rain {
+	display: block;
+}
+
+:root[data-theme="terminal"] .theme-swatch-list {
+	bottom: auto;
+	top: 100%;
 }
