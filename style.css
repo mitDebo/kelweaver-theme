@@ -593,6 +593,18 @@ hr {
 	margin-bottom: 0.5rem;
 }
 
+.site-nav a {
+	font-size: 0.75rem;
+	letter-spacing: 0.06em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	text-decoration: none;
+}
+
+.site-nav a:hover {
+	color: var(--color-accent);
+}
+
 .site-search {
 	margin-bottom: 2rem;
 }

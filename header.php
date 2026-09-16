@@ -47,6 +47,7 @@
 					<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
 				</ul>
 			</li>
+			<?php get_template_part( 'template-parts/primary-menu-bar-items' ); ?>
 		</ul>
 
 		<form role="search" method="get" class="site-nav-bar-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
@@ -67,6 +68,14 @@
 
 	<aside class="site-sidebar" id="site-sidebar">
 
+		<details class="site-latest" open>
+			<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
+
+			<ul>
+				<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
+			</ul>
+		</details>
+
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
 			wp_nav_menu(
@@ -78,14 +87,6 @@
 			);
 			?>
 		</nav>
-
-		<details class="site-latest" open>
-			<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
-
-			<ul>
-				<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
-			</ul>
-		</details>
 
 		<hr class="section-divider">
 
