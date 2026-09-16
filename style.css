@@ -23,15 +23,6 @@ Text Domain: kelweaver
 	--font-display: 'Fraunces', Georgia, serif;
 	--font-masthead: var(--font-display);
 
-	--font-option-dancing-script: 'Dancing Script', cursive;
-	--font-option-pacifico: 'Pacifico', cursive;
-	--font-option-kaushan: 'Kaushan Script', cursive;
-	--font-option-yellowtail: 'Yellowtail', cursive;
-	--font-option-satisfy: 'Satisfy', cursive;
-	--font-option-alex-brush: 'Alex Brush', cursive;
-	--font-option-great-vibes: 'Great Vibes', cursive;
-	--font-option-sacramento: 'Sacramento', cursive;
-
 	--sidebar-width: 260px;
 	--content-max-width: 68ch;
 	--layout-max-width: calc(var(--sidebar-width) + var(--content-max-width));
@@ -49,7 +40,7 @@ Text Domain: kelweaver
 
 	--font-body: 'Source Sans 3', sans-serif;
 	--font-display: 'Source Sans 3', sans-serif;
-	--font-masthead: var(--font-display);
+	--font-masthead: 'Dancing Script', cursive;
 }
 
 :root[data-theme="night"] body {
@@ -125,7 +116,7 @@ hr {
 .site-masthead .site-title {
 	margin: 0;
 	font-family: var(--font-masthead);
-	font-size: clamp(2.25rem, 6vw, 4rem);
+	font-size: clamp(2.75rem, 6vw, 4rem);
 	font-weight: 600;
 	line-height: 1.1;
 }
@@ -280,26 +271,6 @@ hr {
 .site-footer-inner .section-divider {
 	width: 100%;
 	background: var(--color-divider);
-}
-
-.masthead-font-test {
-	display: none;
-	margin-bottom: 1.5rem;
-}
-
-:root[data-theme="night"] .masthead-font-test {
-	display: block;
-}
-
-.masthead-font-test-select {
-	width: 100%;
-	font-family: inherit;
-	font-size: 0.8rem;
-	color: var(--color-text);
-	background: var(--color-surface);
-	border: 1px solid var(--color-border);
-	border-radius: 4px;
-	padding: 0.4rem 0.5rem;
 }
 
 .site-latest {
