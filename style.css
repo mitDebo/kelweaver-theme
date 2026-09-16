@@ -698,13 +698,6 @@ hr {
 	column-gap: 1.5rem;
 	align-items: start;
 	grid-template-areas:
-		"thumb title"
-		"thumb meta"
-		"excerpt excerpt";
-}
-
-:root[data-theme="night"] .post-list-item.has-thumbnail {
-	grid-template-areas:
 		"title title"
 		"meta meta"
 		"thumb excerpt";
@@ -733,6 +726,10 @@ hr {
 .post-list-item .post-summary {
 	grid-area: excerpt;
 	min-width: 0;
+}
+
+.post-list-item .post-excerpt p:first-child {
+	margin-top: 0;
 }
 
 .post-title {
@@ -885,8 +882,7 @@ hr {
 }
 
 @media (max-width: 768px) {
-	.post-list-item.has-thumbnail,
-	:root[data-theme="night"] .post-list-item.has-thumbnail {
+	.post-list-item.has-thumbnail {
 		grid-template-columns: 1fr;
 		row-gap: 0.75rem;
 		grid-template-areas:
