@@ -10,12 +10,6 @@ get_header();
 
 	<article <?php post_class( 'single-post' ); ?> id="post-<?php the_ID(); ?>">
 
-		<?php if ( has_post_thumbnail() ) : ?>
-			<div class="post-thumbnail">
-				<?php the_post_thumbnail( 'large' ); ?>
-			</div>
-		<?php endif; ?>
-
 		<h1 class="post-title"><?php the_title(); ?></h1>
 
 		<div class="post-meta">
@@ -29,6 +23,12 @@ get_header();
 				</span>
 			<?php endif; ?>
 		</div>
+
+		<?php if ( has_post_thumbnail() ) : ?>
+			<div class="post-thumbnail">
+				<?php the_post_thumbnail( 'large' ); ?>
+			</div>
+		<?php endif; ?>
 
 		<div class="post-content">
 			<?php the_content(); ?>
