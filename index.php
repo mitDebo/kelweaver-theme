@@ -12,7 +12,19 @@ get_header();
 		<?php endif; ?>
 		<?php $kelweaver_first_post = false; ?>
 
-		<article <?php post_class( 'post-list-item' ); ?> id="post-<?php the_ID(); ?>">
+		<?php
+		$kelweaver_list_classes = array( 'post-list-item' );
+		if ( has_post_thumbnail() ) {
+			$kelweaver_list_classes[] = 'has-thumbnail';
+		}
+		?>
+		<article <?php post_class( $kelweaver_list_classes ); ?> id="post-<?php the_ID(); ?>">
+
+			<?php if ( has_post_thumbnail() ) : ?>
+				<a href="<?php the_permalink(); ?>" class="post-thumbnail">
+					<?php the_post_thumbnail( 'medium' ); ?>
+				</a>
+			<?php endif; ?>
 
 			<h2 class="post-title">
 				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
@@ -30,25 +42,15 @@ get_header();
 				<?php endif; ?>
 			</div>
 
-			<div class="post-body-row">
+			<div class="post-summary">
 
-				<?php if ( has_post_thumbnail() ) : ?>
-					<a href="<?php the_permalink(); ?>" class="post-thumbnail">
-						<?php the_post_thumbnail( 'medium' ); ?>
-					</a>
-				<?php endif; ?>
-
-				<div class="post-summary">
-
-					<div class="post-excerpt">
-						<?php the_excerpt(); ?>
-					</div>
-
-					<a class="read-more" href="<?php the_permalink(); ?>">
-						<?php esc_html_e( 'Read more', 'kelweaver' ); ?> &rarr;
-					</a>
-
+				<div class="post-excerpt">
+					<?php the_excerpt(); ?>
 				</div>
+
+				<a class="read-more" href="<?php the_permalink(); ?>">
+					<?php esc_html_e( 'Read more', 'kelweaver' ); ?> &rarr;
+				</a>
 
 			</div>
 
