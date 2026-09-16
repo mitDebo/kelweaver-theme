@@ -334,6 +334,14 @@ hr {
 
 .site-nav-bar-item {
 	position: relative;
+	display: flex;
+	align-items: center;
+}
+
+.site-nav-bar-item + .site-nav-bar-item::before {
+	content: '|';
+	margin: 0 1rem;
+	color: var(--color-border);
 }
 
 .site-nav-bar-link {
