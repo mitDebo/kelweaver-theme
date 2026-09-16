@@ -46,6 +46,20 @@
 
 	<aside class="site-sidebar" id="site-sidebar">
 
+		<div class="masthead-font-test">
+			<label class="screen-reader-text" for="masthead-font-test-select"><?php esc_html_e( 'Masthead font (test)', 'kelweaver' ); ?></label>
+			<select id="masthead-font-test-select" class="masthead-font-test-select">
+				<option value="dancing-script"><?php esc_html_e( 'Dancing Script', 'kelweaver' ); ?></option>
+				<option value="pacifico"><?php esc_html_e( 'Pacifico', 'kelweaver' ); ?></option>
+				<option value="kaushan"><?php esc_html_e( 'Kaushan Script', 'kelweaver' ); ?></option>
+				<option value="yellowtail"><?php esc_html_e( 'Yellowtail', 'kelweaver' ); ?></option>
+				<option value="satisfy"><?php esc_html_e( 'Satisfy', 'kelweaver' ); ?></option>
+				<option value="alex-brush"><?php esc_html_e( 'Alex Brush', 'kelweaver' ); ?></option>
+				<option value="great-vibes"><?php esc_html_e( 'Great Vibes', 'kelweaver' ); ?></option>
+				<option value="sacramento"><?php esc_html_e( 'Sacramento', 'kelweaver' ); ?></option>
+			</select>
+		</div>
+
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
 			wp_nav_menu(
