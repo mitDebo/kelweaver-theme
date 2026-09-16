@@ -36,6 +36,33 @@
 	</div>
 </header>
 
+<nav class="site-nav-bar" id="site-nav-bar" aria-label="<?php esc_attr_e( 'Night navigation', 'kelweaver' ); ?>">
+	<div class="site-nav-bar-inner">
+		<ul class="site-nav-bar-menu">
+			<li class="site-nav-bar-item">
+				<button type="button" class="site-nav-bar-link" aria-haspopup="true" aria-expanded="false">
+					<?php esc_html_e( 'Latest', 'kelweaver' ); ?>
+				</button>
+				<ul class="site-nav-bar-dropdown">
+					<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
+				</ul>
+			</li>
+		</ul>
+
+		<form role="search" method="get" class="site-nav-bar-search" action="<?php echo esc_url( home_url( '/' ) ); ?>">
+			<label class="screen-reader-text" for="site-nav-bar-search-input"><?php esc_html_e( 'Search for:', 'kelweaver' ); ?></label>
+			<input type="search" id="site-nav-bar-search-input" class="site-nav-bar-search-input" name="s" value="<?php echo esc_attr( get_search_query() ); ?>" placeholder="<?php esc_attr_e( 'Search&hellip;', 'kelweaver' ); ?>">
+			<button type="submit" class="site-nav-bar-search-button">
+				<svg class="search-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+					<circle cx="10.5" cy="10.5" r="6.5" fill="none" stroke="currentColor" stroke-width="2"/>
+					<line x1="15.5" y1="15.5" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+				</svg>
+				<span class="screen-reader-text"><?php esc_html_e( 'Search', 'kelweaver' ); ?></span>
+			</button>
+		</form>
+	</div>
+</nav>
+
 <div class="site-wrapper">
 
 	<aside class="site-sidebar" id="site-sidebar">
@@ -52,31 +79,11 @@
 			?>
 		</nav>
 
-		<?php
-		$latest_posts = new WP_Query(
-			array(
-				'posts_per_page' => 10,
-				'no_found_rows'  => true,
-				'post_status'    => 'publish',
-			)
-		);
-		?>
 		<details class="site-latest" open>
 			<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
 
 			<ul>
-				<?php if ( $latest_posts->have_posts() ) : ?>
-					<?php while ( $latest_posts->have_posts() ) : $latest_posts->the_post(); ?>
-						<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-					<?php endwhile; ?>
-				<?php endif; ?>
-				<?php wp_reset_postdata(); ?>
-
-				<?php
-				$archive_page = get_page_by_path( 'archive' );
-				$archive_url  = $archive_page ? get_permalink( $archive_page ) : home_url( '/' );
-				?>
-				<li><a href="<?php echo esc_url( $archive_url ); ?>"><?php esc_html_e( 'Browse all', 'kelweaver' ); ?> &rarr;</a></li>
+				<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
 			</ul>
 		</details>
 
