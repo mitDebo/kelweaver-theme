@@ -25,13 +25,15 @@
 					</button>
 					<ul class="theme-swatch-list" id="theme-swatch-list">
 						<li>
-							<button type="button" class="theme-swatch theme-swatch-paperback" data-theme-value="paperback">
-								<span class="screen-reader-text"><?php esc_html_e( 'Paperback', 'kelweaver' ); ?></span>
+							<button type="button" class="theme-swatch-option" data-theme-value="paperback">
+								<span class="theme-swatch-option-label"><?php esc_html_e( 'Paperback', 'kelweaver' ); ?></span>
+								<span class="theme-swatch theme-swatch-paperback" aria-hidden="true"></span>
 							</button>
 						</li>
 						<li>
-							<button type="button" class="theme-swatch theme-swatch-night" data-theme-value="night">
-								<span class="screen-reader-text"><?php esc_html_e( 'Night', 'kelweaver' ); ?></span>
+							<button type="button" class="theme-swatch-option" data-theme-value="night">
+								<span class="theme-swatch-option-label"><?php esc_html_e( 'Night', 'kelweaver' ); ?></span>
+								<span class="theme-swatch theme-swatch-night" aria-hidden="true"></span>
 							</button>
 						</li>
 					</ul>

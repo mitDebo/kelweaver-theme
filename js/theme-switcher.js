@@ -27,8 +27,24 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			option.addEventListener( 'click', function () {
 				setTheme( option.getAttribute( 'data-theme-value' ) );
 				toggle.setAttribute( 'aria-expanded', 'false' );
-				toggle.focus();
+
+				// Force the list closed right away, even though the mouse may
+				// still be hovering it or focus may still be inside it.
+				switcher.classList.add( 'is-suppressed' );
+				if ( document.activeElement && switcher.contains( document.activeElement ) ) {
+					document.activeElement.blur();
+				}
 			} );
+		} );
+
+		switcher.addEventListener( 'mouseenter', function () {
+			toggle.setAttribute( 'aria-expanded', 'true' );
+		} );
+
+		switcher.addEventListener( 'mouseleave', function () {
+			toggle.setAttribute( 'aria-expanded', 'false' );
+			// Once the mouse actually leaves, the next hover should open it again.
+			switcher.classList.remove( 'is-suppressed' );
 		} );
 
 		switcher.addEventListener( 'focusin', function () {
@@ -39,16 +55,9 @@ document.addEventListener( 'DOMContentLoaded', function () {
 			window.setTimeout( function () {
 				if ( ! switcher.contains( document.activeElement ) ) {
 					toggle.setAttribute( 'aria-expanded', 'false' );
+					switcher.classList.remove( 'is-suppressed' );
 				}
 			}, 0 );
-		} );
-
-		switcher.addEventListener( 'mouseenter', function () {
-			toggle.setAttribute( 'aria-expanded', 'true' );
-		} );
-
-		switcher.addEventListener( 'mouseleave', function () {
-			toggle.setAttribute( 'aria-expanded', 'false' );
 		} );
 	}
 } );
