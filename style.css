@@ -10,9 +10,14 @@ Text Domain: kelweaver
 */
 
 :root {
-	--color-bg: #efece4;
+	--swatch-paperback-bg: #efece4;
+	--swatch-paperback-accent: #8c3a2b;
+	--swatch-night-bg: #24272e;
+	--swatch-night-accent: #70b3ff;
+
+	--color-bg: var(--swatch-paperback-bg);
 	--color-text: #1b1b1a;
-	--color-accent: #8c3a2b;
+	--color-accent: var(--swatch-paperback-accent);
 	--color-heading-accent: var(--color-accent);
 	--color-border: rgba(0, 0, 0, 0.12);
 	--color-muted: rgba(0, 0, 0, 0.6);
@@ -29,9 +34,9 @@ Text Domain: kelweaver
 }
 
 :root[data-theme="night"] {
-	--color-bg: #24272e;
+	--color-bg: var(--swatch-night-bg);
 	--color-text: #cbccd0;
-	--color-accent: #70b3ff;
+	--color-accent: var(--swatch-night-accent);
 	--color-heading-accent: #ffffff;
 	--color-border: rgba(255, 255, 255, 0.14);
 	--color-muted: rgba(203, 204, 208, 0.62);
@@ -135,14 +140,62 @@ hr {
 	gap: 0.75rem;
 }
 
-.theme-select {
-	font-family: inherit;
-	font-size: 0.8rem;
-	color: var(--color-text);
+.theme-switcher {
+	position: relative;
+}
+
+.theme-swatch {
+	display: block;
+	width: 1.75rem;
+	height: 1.75rem;
+	box-sizing: border-box;
+	padding: 0;
+	border-radius: 50%;
+	border: 2px solid;
+	cursor: pointer;
+}
+
+.theme-swatch:hover,
+.theme-swatch:focus-visible {
+	outline: 2px solid var(--color-accent);
+	outline-offset: 2px;
+}
+
+.theme-swatch-current {
+	background: var(--color-bg);
+	border-color: var(--color-accent);
+}
+
+.theme-swatch-list {
+	list-style: none;
+	margin: 0;
+	padding: 0.4rem;
+	position: absolute;
+	top: 100%;
+	right: 0;
+	z-index: 10;
+	display: none;
+	flex-direction: column;
+	gap: 0.5rem;
 	background: var(--color-surface);
 	border: 1px solid var(--color-border);
-	border-radius: 4px;
-	padding: 0.3rem 0.5rem;
+	border-radius: 8px;
+	box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.theme-switcher:hover .theme-swatch-list,
+.theme-switcher:focus-within .theme-swatch-list {
+	display: flex;
+}
+
+.theme-swatch-paperback {
+	background: var(--swatch-paperback-bg);
+	border-color: var(--swatch-paperback-accent);
+}
+
+.theme-swatch-night {
+	background: var(--swatch-night-bg);
+	border-color: var(--swatch-night-accent);
 }
 
 .nav-toggle {

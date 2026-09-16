@@ -19,11 +19,23 @@
 			</p>
 
 			<div class="masthead-controls">
-				<label class="screen-reader-text" for="theme-select"><?php esc_html_e( 'Color scheme', 'kelweaver' ); ?></label>
-				<select id="theme-select" class="theme-select">
-					<option value="paperback"><?php esc_html_e( 'Paperback', 'kelweaver' ); ?></option>
-					<option value="night"><?php esc_html_e( 'Night', 'kelweaver' ); ?></option>
-				</select>
+				<div class="theme-switcher" id="theme-switcher">
+					<button type="button" class="theme-swatch theme-swatch-current" id="theme-swatch-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="theme-swatch-list">
+						<span class="screen-reader-text"><?php esc_html_e( 'Color scheme', 'kelweaver' ); ?></span>
+					</button>
+					<ul class="theme-swatch-list" id="theme-swatch-list">
+						<li>
+							<button type="button" class="theme-swatch theme-swatch-paperback" data-theme-value="paperback">
+								<span class="screen-reader-text"><?php esc_html_e( 'Paperback', 'kelweaver' ); ?></span>
+							</button>
+						</li>
+						<li>
+							<button type="button" class="theme-swatch theme-swatch-night" data-theme-value="night">
+								<span class="screen-reader-text"><?php esc_html_e( 'Night', 'kelweaver' ); ?></span>
+							</button>
+						</li>
+					</ul>
+				</div>
 
 				<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-sidebar">
 					<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
