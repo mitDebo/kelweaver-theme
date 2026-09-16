@@ -36,7 +36,7 @@
 	</div>
 </header>
 
-<nav class="site-nav-bar" id="site-nav-bar" aria-label="<?php esc_attr_e( 'Night navigation', 'kelweaver' ); ?>">
+<nav class="site-nav-bar" id="site-nav-bar" aria-label="<?php esc_attr_e( 'Moonlight navigation', 'kelweaver' ); ?>">
 	<div class="site-nav-bar-inner">
 		<ul class="site-nav-bar-menu">
 			<li class="site-nav-bar-item">

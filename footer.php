@@ -22,9 +22,9 @@
 						</button>
 					</li>
 					<li>
-						<button type="button" class="theme-swatch-option" data-theme-value="night">
-							<span class="theme-swatch-option-label"><?php esc_html_e( 'Night', 'kelweaver' ); ?></span>
-							<span class="theme-swatch theme-swatch-night" aria-hidden="true"></span>
+						<button type="button" class="theme-swatch-option" data-theme-value="moonlight">
+							<span class="theme-swatch-option-label"><?php esc_html_e( 'Moonlight', 'kelweaver' ); ?></span>
+							<span class="theme-swatch theme-swatch-moonlight" aria-hidden="true"></span>
 						</button>
 					</li>
 				</ul>
