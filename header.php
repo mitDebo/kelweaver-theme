@@ -19,26 +19,6 @@
 			</p>
 
 			<div class="masthead-controls">
-				<div class="theme-switcher" id="theme-switcher">
-					<button type="button" class="theme-swatch theme-swatch-current" id="theme-swatch-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="theme-swatch-list">
-						<span class="screen-reader-text"><?php esc_html_e( 'Color scheme', 'kelweaver' ); ?></span>
-					</button>
-					<ul class="theme-swatch-list" id="theme-swatch-list">
-						<li>
-							<button type="button" class="theme-swatch-option" data-theme-value="paperback">
-								<span class="theme-swatch-option-label"><?php esc_html_e( 'Paperback', 'kelweaver' ); ?></span>
-								<span class="theme-swatch theme-swatch-paperback" aria-hidden="true"></span>
-							</button>
-						</li>
-						<li>
-							<button type="button" class="theme-swatch-option" data-theme-value="night">
-								<span class="theme-swatch-option-label"><?php esc_html_e( 'Night', 'kelweaver' ); ?></span>
-								<span class="theme-swatch theme-swatch-night" aria-hidden="true"></span>
-							</button>
-						</li>
-					</ul>
-				</div>
-
 				<button type="button" class="nav-toggle" aria-expanded="false" aria-controls="site-sidebar">
 					<span class="screen-reader-text"><?php esc_html_e( 'Menu', 'kelweaver' ); ?></span>
 					<svg class="nav-toggle-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
