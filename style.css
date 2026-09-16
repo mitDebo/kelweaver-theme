@@ -55,19 +55,36 @@ Text Domain: kelweaver
 }
 
 :root[data-theme="terminal"] {
+	font-size: 125%;
+
 	--color-bg: var(--swatch-terminal-bg);
-	--color-text: var(--swatch-terminal-accent);
-	--color-accent: var(--swatch-terminal-accent);
+	--color-text: #cdf5d2;
+	--color-accent: #4dd8ff;
 	--color-heading-accent: var(--swatch-terminal-accent);
-	--color-border: rgba(0, 255, 65, 0.4);
-	--color-muted: rgba(0, 255, 65, 0.55);
+	--color-highlight: #ffb000;
+	--color-border: rgba(77, 216, 255, 0.35);
+	--color-muted: rgba(185, 230, 195, 0.55);
 	--color-surface: #000000;
 	--color-divider: rgba(0, 255, 65, 0.3);
+
+	--font-body: 'VT323', 'Courier New', monospace;
+	--font-display: 'VT323', 'Courier New', monospace;
+	--font-masthead: 'VT323', 'Courier New', monospace;
 }
 
 :root[data-theme="terminal"] body {
 	background-image: none;
 	background-color: #000000;
+	letter-spacing: 0.02em;
+}
+
+:root[data-theme="terminal"] .post-meta .post-category {
+	color: var(--color-highlight);
+}
+
+:root[data-theme="terminal"] ::selection {
+	background: rgba(255, 176, 0, 0.35);
+	color: #000000;
 }
 
 :root[data-theme="terminal"] .site-masthead-inner,

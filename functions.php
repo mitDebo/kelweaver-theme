@@ -14,7 +14,7 @@ add_action( 'after_setup_theme', 'kelweaver_setup' );
 function kelweaver_scripts() {
 	wp_enqueue_style(
 		'kelweaver-google-fonts',
-		'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;700&family=Dancing+Script:wght@400;700&display=swap',
+		'https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Source+Sans+3:wght@400;700&family=Dancing+Script:wght@400;700&family=VT323&display=swap',
 		array(),
 		null
 	);
