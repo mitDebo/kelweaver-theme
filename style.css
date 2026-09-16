@@ -67,7 +67,7 @@ Text Domain: kelweaver
 	--color-surface: #000000;
 	--color-divider: rgba(0, 255, 65, 0.3);
 
-	--font-body: 'VT323', 'Courier New', monospace;
+	--font-body: 'Space Mono', 'Courier New', monospace;
 	--font-display: 'VT323', 'Courier New', monospace;
 	--font-masthead: 'VT323', 'Courier New', monospace;
 }
