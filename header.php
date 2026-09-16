@@ -46,15 +46,6 @@
 
 	<aside class="site-sidebar" id="site-sidebar">
 
-		<div class="accent-test">
-			<label class="screen-reader-text" for="accent-test-select"><?php esc_html_e( 'Night accent (test)', 'kelweaver' ); ?></label>
-			<select id="accent-test-select" class="accent-test-select">
-				<option value="amber"><?php esc_html_e( 'Amber', 'kelweaver' ); ?></option>
-				<option value="cyan"><?php esc_html_e( 'Cyan', 'kelweaver' ); ?></option>
-				<option value="coral"><?php esc_html_e( 'Coral', 'kelweaver' ); ?></option>
-			</select>
-		</div>
-
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
 			<?php
 			wp_nav_menu(
