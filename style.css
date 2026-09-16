@@ -344,6 +344,10 @@ hr {
 	color: var(--color-border);
 }
 
+.site-nav-bar-item + .site-nav-bar-item .site-nav-bar-dropdown {
+	left: 1rem;
+}
+
 .site-nav-bar-link {
 	font: inherit;
 	font-size: 0.8rem;
