@@ -68,24 +68,19 @@
 
 	<aside class="site-sidebar" id="site-sidebar">
 
-		<details class="site-latest" open>
-			<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
-
-			<ul>
-				<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
-			</ul>
-		</details>
-
 		<nav class="site-nav" id="site-nav" aria-label="<?php esc_attr_e( 'Primary menu', 'kelweaver' ); ?>">
-			<?php
-			wp_nav_menu(
-				array(
-					'theme_location' => 'primary',
-					'container'      => false,
-					'fallback_cb'    => false,
-				)
-			);
-			?>
+			<ul class="site-nav-list">
+				<li class="site-nav-list-item">
+					<details class="site-latest" open>
+						<summary><?php esc_html_e( 'Latest', 'kelweaver' ); ?></summary>
+
+						<ul>
+							<?php get_template_part( 'template-parts/latest-posts-items' ); ?>
+						</ul>
+					</details>
+				</li>
+				<?php get_template_part( 'template-parts/primary-menu-list-items' ); ?>
+			</ul>
 		</nav>
 
 		<hr class="section-divider">
