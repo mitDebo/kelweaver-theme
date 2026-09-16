@@ -14,37 +14,41 @@ get_header();
 
 		<article <?php post_class( 'post-list-item' ); ?> id="post-<?php the_ID(); ?>">
 
-			<?php if ( has_post_thumbnail() ) : ?>
-				<a href="<?php the_permalink(); ?>" class="post-thumbnail">
-					<?php the_post_thumbnail( 'medium' ); ?>
-				</a>
-			<?php endif; ?>
+			<h2 class="post-title">
+				<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+			</h2>
 
-			<div class="post-summary">
+			<div class="post-meta">
+				<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
+					<?php echo esc_html( get_the_date() ); ?>
+				</time>
+				<?php $categories = get_the_category(); ?>
+				<?php if ( ! empty( $categories ) ) : ?>
+					<span class="post-category">
+						<?php echo esc_html( implode( ', ', wp_list_pluck( $categories, 'name' ) ) ); ?>
+					</span>
+				<?php endif; ?>
+			</div>
 
-				<h2 class="post-title">
-					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-				</h2>
+			<div class="post-body-row">
 
-				<div class="post-meta">
-					<time datetime="<?php echo esc_attr( get_the_date( 'c' ) ); ?>">
-						<?php echo esc_html( get_the_date() ); ?>
-					</time>
-					<?php $categories = get_the_category(); ?>
-					<?php if ( ! empty( $categories ) ) : ?>
-						<span class="post-category">
-							<?php echo esc_html( implode( ', ', wp_list_pluck( $categories, 'name' ) ) ); ?>
-						</span>
-					<?php endif; ?>
+				<?php if ( has_post_thumbnail() ) : ?>
+					<a href="<?php the_permalink(); ?>" class="post-thumbnail">
+						<?php the_post_thumbnail( 'medium' ); ?>
+					</a>
+				<?php endif; ?>
+
+				<div class="post-summary">
+
+					<div class="post-excerpt">
+						<?php the_excerpt(); ?>
+					</div>
+
+					<a class="read-more" href="<?php the_permalink(); ?>">
+						<?php esc_html_e( 'Read more', 'kelweaver' ); ?> &rarr;
+					</a>
+
 				</div>
-
-				<div class="post-excerpt">
-					<?php the_excerpt(); ?>
-				</div>
-
-				<a class="read-more" href="<?php the_permalink(); ?>">
-					<?php esc_html_e( 'Read more', 'kelweaver' ); ?> &rarr;
-				</a>
 
 			</div>
 

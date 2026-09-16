@@ -539,12 +539,12 @@ hr {
 		padding-top: 1rem;
 	}
 
-	.post-list-item {
+	.post-body-row {
 		flex-direction: column;
 		gap: 0.75rem;
 	}
 
-	.post-list-item .post-thumbnail {
+	.post-body-row .post-thumbnail {
 		flex-basis: auto;
 		width: 100%;
 	}
@@ -692,23 +692,24 @@ hr {
 	margin-bottom: 1rem;
 }
 
-.post-list-item {
+.post-body-row {
 	display: flex;
 	align-items: flex-start;
 	gap: 1.5rem;
+	margin-top: 1rem;
 }
 
-.post-list-item .post-thumbnail {
+.post-body-row .post-thumbnail {
 	flex: 0 0 200px;
 	display: block;
 }
 
-.post-list-item .post-thumbnail img {
+.post-body-row .post-thumbnail img {
 	margin-bottom: 0;
 	border-radius: 4px;
 }
 
-.post-list-item .post-summary {
+.post-body-row .post-summary {
 	flex: 1 1 auto;
 	min-width: 0;
 }
