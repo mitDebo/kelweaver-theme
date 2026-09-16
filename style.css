@@ -542,6 +542,10 @@ hr {
 	background: var(--color-divider);
 }
 
+:root[data-theme="night"] .site-masthead-inner .section-divider {
+	display: none;
+}
+
 .site-latest {
 	margin-bottom: 2rem;
 }
@@ -626,7 +630,6 @@ hr {
 
 .site-social--footer {
 	display: none;
-	margin-bottom: 1.5rem;
 }
 
 :root[data-theme="night"] .site-social--sidebar {
