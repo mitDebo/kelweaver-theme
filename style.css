@@ -65,9 +65,9 @@ Text Domain: kelweaver
 	--color-surface: #000000;
 	--color-divider: rgba(0, 255, 65, 0.3);
 
-	--font-body: 'Silkscreen', 'Courier New', monospace;
-	--font-display: 'Silkscreen', 'Courier New', monospace;
-	--font-masthead: 'Silkscreen', 'Courier New', monospace;
+	--font-body: 'DotGothic16', 'Courier New', monospace;
+	--font-display: 'DotGothic16', 'Courier New', monospace;
+	--font-masthead: 'DotGothic16', 'Courier New', monospace;
 }
 
 :root[data-theme="terminal"] body {
