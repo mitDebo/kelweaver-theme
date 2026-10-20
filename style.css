@@ -392,6 +392,25 @@ hr {
 	border-bottom: 1px solid var(--color-border);
 }
 
+/* Keep the sticky nav bar clear of the WordPress admin bar instead
+   of sitting underneath it when logged in. */
+#wpadminbar {
+	position: fixed !important;
+	top: 0 !important;
+}
+
+@media screen and (min-width: 783px) {
+	:root[data-theme="moonlight"] body.admin-bar .site-nav-bar {
+		top: 32px;
+	}
+}
+
+@media screen and (max-width: 782px) {
+	:root[data-theme="moonlight"] body.admin-bar .site-nav-bar {
+		top: 46px;
+	}
+}
+
 .site-nav-bar-inner {
 	max-width: var(--layout-max-width);
 	margin: 0 auto;
@@ -551,6 +570,18 @@ hr {
 	padding-right: 3rem;
 }
 
+:root[data-theme="terminal"] .site-footer-row {
+	padding-right: 1.5rem;
+}
+
+/* .theme-switcher is itself absolutely positioned (right: 0) at
+   this width, so the row's own padding-right above doesn't move
+   it -- pull it in directly instead, clear of the terminal
+   footer's right border. */
+:root[data-theme="terminal"] .site-footer-row .theme-switcher {
+	right: 1.5rem;
+}
+
 @media (max-width: 768px) {
 	.nav-toggle {
 		display: inline-flex;
@@ -606,6 +637,15 @@ hr {
 	:root[data-theme="moonlight"] .site-footer-row {
 		justify-content: center;
 		padding-right: 0;
+	}
+
+	/* At this width .theme-switcher becomes position: static, so
+	   .theme-swatch-list's absolute positioning falls back to
+	   .site-footer-row as its containing block -- its own
+	   padding-right no longer moves the list, which otherwise hangs
+	   off the right edge of the bordered terminal footer box. */
+	:root[data-theme="terminal"] .theme-swatch-list {
+		right: 0.5rem;
 	}
 
 	.site-wrapper {
